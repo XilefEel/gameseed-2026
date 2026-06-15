@@ -62,7 +62,7 @@ export class PathDrawing {
 
     if (this.grid.isEndCell(last)) {
       // emit the path data to Game scene
-      this.scene.events.emit("pathConfirmed", [...this.path]);
+      this.scene.events.emit("path-confirmed", [...this.path]);
     } else {
       this.clearPath();
     }
