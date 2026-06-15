@@ -29,3 +29,14 @@ export const pixelToGrid = (
     gridY: Math.floor((pixelY - offsetY) / cellSize),
   };
 };
+
+export const isAdjacent = (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+): boolean => {
+  const dx = Math.abs(x1 - x2);
+  const dy = Math.abs(y1 - y2);
+  return (dx === 1 && dy === 0) || (dx === 0 && dy === 1);
+};

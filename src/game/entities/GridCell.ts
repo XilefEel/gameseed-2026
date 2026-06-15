@@ -25,13 +25,13 @@ export class GridCell extends GameObjects.Rectangle {
     this.setStrokeStyle(1, colors.cellBorder);
 
     this.on("pointerover", () => {
-      if (!this.isStart && !this.isEnd) {
+      if (!this.isStart && !this.isEnd && !this.isPath) {
         this.setFillStyle(colors.hover);
       }
     });
 
     this.on("pointerout", () => {
-      if (!this.isStart && !this.isEnd) {
+      if (!this.isStart && !this.isEnd && !this.isPath) {
         this.setFillStyle(colors.cell);
       }
     });
@@ -49,7 +49,11 @@ export class GridCell extends GameObjects.Rectangle {
 
   setAsPath() {
     this.isPath = true;
-    this.setFillStyle(colors.path);
+    console.log(`Path cell at (${this.gridX}, ${this.gridY})`);
+
+    if (!this.isStart && !this.isEnd) {
+      this.setFillStyle(colors.path);
+    }
   }
 
   reset() {
