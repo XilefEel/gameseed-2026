@@ -1,9 +1,10 @@
-import { Input, Math, Scene } from "phaser";
+import { Input, Scene } from "phaser";
 import { Grid } from "../entities/Grid";
 import { isAdjacent } from "../utils/grid";
+import { Vec2 } from "../types";
 
 export class PathDrawing {
-  private path: Math.Vector2[] = [];
+  private path: Vec2[] = [];
   private isDrawing: boolean = false;
   private scene: Scene;
   private grid: Grid;
@@ -19,10 +20,11 @@ export class PathDrawing {
 
   private startDrawing(pointer: Input.Pointer) {
     const cell = this.grid.getCellAtPointer(pointer.x, pointer.y);
-    if (!cell || !this.grid.isStartCell(cell)) return;
+
+    if (!cell || !this.grid.isStartCell(cell.pos)) return;
 
     this.isDrawing = true;
-    this.path = [new Math.Vector2(cell.gridX, cell.gridY)];
+    this.path = [cell.pos];
     cell.setAsPath();
   }
 
@@ -30,42 +32,52 @@ export class PathDrawing {
     if (!this.isDrawing) return;
 
     const cell = this.grid.getCellAtPointer(pointer.x, pointer.y);
-    if (!cell || this.grid.isStartCell(cell)) return;
+    if (!cell || this.grid.isStartCell(cell.pos)) return;
 
     const last = this.path[this.path.length - 1];
     const secondLast = this.path[this.path.length - 2];
 
-    if (cell.gridX === last.x && cell.gridY === last.y) return;
+    if (cell.pos.x === last.x && cell.pos.y === last.y) return;
 
     if (
       secondLast &&
-      cell.gridX === secondLast.x &&
-      cell.gridY === secondLast.y
+      cell.pos.x === secondLast.x &&
+      cell.pos.y === secondLast.y
     ) {
       const removed = this.path.pop()!;
       this.grid.getCell(removed.x, removed.y)?.reset();
       return;
     }
 
-    if (
-      isAdjacent(last.x, last.y, cell.gridX, cell.gridY) &&
-      !this.isInPath(cell.gridX, cell.gridY)
-    ) {
-      this.path.push(new Math.Vector2(cell.gridX, cell.gridY));
+    if (isAdjacent(last, cell.pos) && !this.isInPath(cell.pos)) {
+      this.path.push(cell.pos);
       cell.setAsPath();
     }
   }
 
   private stopDrawing() {
     this.isDrawing = false;
+
+    const last = this.path[this.path.length - 1];
+
+    if (this.grid.isEndCell(last)) {
+      // emit the path data to Game scene
+      this.scene.events.emit("pathConfirmed", [...this.path]);
+    } else {
+      this.clearPath();
+    }
   }
 
-  private isInPath(gridX: number, gridY: number): boolean {
-    return this.path.some((v) => v.x === gridX && v.y === gridY);
+  private isInPath(pos: Vec2): boolean {
+    return this.path.some((v) => v.x === pos.x && v.y === pos.y);
   }
 
   clearPath() {
-    this.path.forEach((p) => this.grid.getCell(p.x, p.y)?.reset());
+    this.path.forEach((p) => {
+      if (!this.grid.isStartCell(p) && !this.grid.isEndCell(p)) {
+        this.grid.getCell(p.x, p.y)?.reset();
+      }
+    });
     this.path = [];
   }
 

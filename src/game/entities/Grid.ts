@@ -1,14 +1,15 @@
-import { Math, Scene } from "phaser";
+import { Scene } from "phaser";
 import { GRID_CONFIG } from "../config/grid";
 import { pixelToGrid } from "../utils/grid";
 import { GridCell } from "./GridCell";
+import { Vec2 } from "../types";
 
 export class Grid {
   private cells: GridCell[][] = [];
   private scene: Scene;
 
-  start: Math.Vector2 = new Math.Vector2(0, 0);
-  end: Math.Vector2 = new Math.Vector2(7, 7);
+  start: Vec2 = { x: 0, y: 0 };
+  end: Vec2 = { x: GRID_CONFIG.columns - 1, y: GRID_CONFIG.rows - 1 };
 
   constructor(scene: Scene) {
     this.scene = scene;
@@ -53,12 +54,12 @@ export class Grid {
     return this.cells[gridY][gridX];
   }
 
-  isStartCell(cell: GridCell): boolean {
-    return cell.isStart;
+  isStartCell(cell: Vec2): boolean {
+    return cell.x === this.start.x && cell.y === this.start.y;
   }
 
-  isEndCell(cell: GridCell): boolean {
-    return cell.isEnd;
+  isEndCell(cell: Vec2): boolean {
+    return cell.x === this.end.x && cell.y === this.end.y;
   }
 
   resetPath() {

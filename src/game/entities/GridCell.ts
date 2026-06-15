@@ -1,13 +1,12 @@
 import { GRID_CONFIG } from "../config/grid";
+import { Vec2 } from "../types";
 import { gridToPixel } from "../utils/grid";
 import { GameObjects, Scene } from "phaser";
 
 const { cellSize, colors } = GRID_CONFIG;
 
 export class GridCell extends GameObjects.Rectangle {
-  gridX: number;
-  gridY: number;
-
+  pos: Vec2;
   isStart: boolean = false;
   isEnd: boolean = false;
   isPath: boolean = false;
@@ -17,8 +16,11 @@ export class GridCell extends GameObjects.Rectangle {
 
     super(scene, pixelX, pixelY, cellSize - 3, cellSize - 3, colors.cell);
 
-    this.gridX = gridX;
-    this.gridY = gridY;
+    this.pos = {
+      x: gridX,
+      y: gridY,
+    };
+
     scene.add.existing(this);
 
     this.setInteractive();
@@ -49,7 +51,7 @@ export class GridCell extends GameObjects.Rectangle {
 
   setAsPath() {
     this.isPath = true;
-    console.log(`Path cell at (${this.gridX}, ${this.gridY})`);
+    console.log(`Path cell at (${this.pos.x}, ${this.pos.y})`);
 
     if (!this.isStart && !this.isEnd) {
       this.setFillStyle(colors.path);
