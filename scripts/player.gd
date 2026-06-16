@@ -81,14 +81,13 @@ func move(dir: Vector2i) -> void:
 
 func move_to_cell(cell: Vector2i) -> void:
 	is_moving = true
-
+	
+	var asteroid_prev = asteroid.get_cell()
 	asteroid.step()
-	if asteroid.get_cell() == current_cell:
-		return
-
+	
 	var target = grid.map_to_local(cell)
 	var duration = position.distance_to(target) / move_speed
-
+	
 	var tween = create_tween()
 	tween.tween_property(
 		self,
@@ -96,6 +95,14 @@ func move_to_cell(cell: Vector2i) -> void:
 		target,
 		duration
 	)
-
+	
 	await tween.finished
+	
+	var hit = asteroid.get_cell() == current_cell 
+	var swapped = asteroid_prev == current_cell
+	
+	if hit or swapped:
+		await get_tree().create_timer(0.5).timeout
+		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+		
 	is_moving = false
