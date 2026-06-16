@@ -102,7 +102,7 @@ func move_to_cell(cell: Vector2i) -> void:
 	var swapped = asteroid_prev == current_cell
 	
 	if hit or swapped:
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.3).timeout
 		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 		
 	is_moving = false
