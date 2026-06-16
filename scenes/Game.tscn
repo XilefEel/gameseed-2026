@@ -55,8 +55,6 @@ path = Array[Vector2i]([Vector2i(7, 0), Vector2i(7, 1), Vector2i(7, 2), Vector2i
 scale = Vector2(0.1998698, 0.1998698)
 texture = ExtResource("7_kiw3p")
 
-[node name="PathDrawer" type="Node2D" parent="." unique_id=524384532]
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
 position = Vector2(61, 63)
 zoom = Vector2(4.5, 4.5)

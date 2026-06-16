@@ -2,22 +2,19 @@ extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
 @onready var move_label := $"../../UI/Label"
-@onready var asteroid = $"../Asteroid"
 
+const MOVE_SPEED := 200.0
 var is_moving := false
-var move_speed := 200.0
 var moves_left := 15 :
 	set(value):
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
 
 var current_cell := Vector2i.ZERO
-var path: Array[Vector2i] = []
 
 
 func _ready() -> void:
 	current_cell = grid.start_cell
-	path.append(current_cell)
 	position = grid.map_to_local(current_cell)
 	moves_left = moves_left
 
@@ -43,36 +40,19 @@ func _unhandled_input(event) -> void:
 
 func move(dir: Vector2i) -> void:
 	var next = current_cell + dir
-
 	if not grid.is_in_bounds(next):
 		return
 
 	if grid.is_wall(next):
 		return
 
-	var previous = path[-2] if path.size() >= 2 else null
-
-	if previous != null and next == previous:
-		var removed = path.pop_back()
-		grid.clear_path(removed)
-
-		current_cell = next
-		await move_to_cell(next)
-
-		moves_left += 1
-		return
-
-	if path.has(next):
-		return
-
 	if moves_left <= 0:
+		await get_tree().create_timer(0.3).timeout
+		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 		return
 
-	path.append(next)
-	grid.mark_path(next)
 	current_cell = next
 	await move_to_cell(next)
-
 	moves_left -= 1
 
 	if grid.is_end_cell(current_cell):
@@ -89,7 +69,7 @@ func move_to_cell(cell: Vector2i) -> void:
 		a.step()
 
 	var target = grid.map_to_local(cell)
-	var duration = position.distance_to(target) / move_speed
+	var duration = position.distance_to(target) / MOVE_SPEED
 	
 	var tween = create_tween().tween_property(
 		self,
