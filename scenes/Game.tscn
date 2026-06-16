@@ -1,13 +1,13 @@
 [gd_scene format=4 uid="uid://wsp11q4m00jx"]
 
-[ext_resource type="Script" uid="uid://0wqb1rjxbtrg" path="res://scripts/game.gd" id="1_7jktm"]
-[ext_resource type="Texture2D" uid="uid://c5jiua8ntar6y" path="res://tileset-asset.png" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/grid.gd" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/player.gd" id="3_feb5d"]
-[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://icon.svg" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://0wqb1rjxbtrg" path="res://scripts/game.gd" id="1_s0nni"]
+[ext_resource type="Texture2D" uid="uid://c5jiua8ntar6y" path="res://assets/tileset-asset.png" id="2_aug50"]
+[ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/grid.gd" id="3_kiw3p"]
+[ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/player.gd" id="4_400sg"]
+[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://icon.svg" id="5_g4kob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
-texture = ExtResource("1_80nbo")
+texture = ExtResource("2_aug50")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -19,20 +19,20 @@ texture = ExtResource("1_80nbo")
 sources/0 = SubResource("TileSetAtlasSource_e2o6t")
 
 [node name="Game" type="Node2D" unique_id=440468670]
-script = ExtResource("1_7jktm")
+script = ExtResource("1_s0nni")
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=1148009602]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_feb5d")
-script = ExtResource("2_e2o6t")
+script = ExtResource("3_kiw3p")
 
 [node name="Player" type="Node2D" parent="Grid" unique_id=948028343]
-script = ExtResource("3_feb5d")
+script = ExtResource("4_400sg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/Player" unique_id=862988754]
 position = Vector2(-1.1920929e-07, 0)
 scale = Vector2(0.0756836, 0.0756836)
-texture = ExtResource("4_fc0e3")
+texture = ExtResource("5_g4kob")
 
 [node name="PathDrawer" type="Node2D" parent="." unique_id=524384532]
 

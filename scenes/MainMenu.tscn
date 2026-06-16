@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bll3woetjhrlk"]
+
+[ext_resource type="Script" uid="uid://7sbkhhgf04xk" path="res://scripts/main_menu.gd" id="1_yqorp"]
+
+[node name="MainMenu" type="Control" unique_id=1615577758]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yqorp")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1714698281]
+layout_mode = 0
+offset_right = 1144.0
+offset_bottom = 645.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1989131458]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1250402074]
+layout_mode = 2
+text = "INTERSTELLAR OJOL"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=164456067]
+layout_mode = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1240392324]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_quit_button_pressed"]

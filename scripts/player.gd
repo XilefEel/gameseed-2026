@@ -63,6 +63,7 @@ func move(dir: Vector2i) -> void:
 
 	if grid.is_end_cell(current_cell):
 		has_won = true
+		get_tree().change_scene_to_file("res://scenes/Win.tscn")
 		print("WIN!")
 
 

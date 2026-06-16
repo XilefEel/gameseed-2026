@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://df3frb33tk4vk"]
+
+[ext_resource type="Script" uid="uid://ca85gigvlsfp0" path="res://scripts/win.gd" id="1_pnk8a"]
+
+[node name="Win" type="Control" unique_id=1313962871]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pnk8a")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=96123115]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 658.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=802985784]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1270261079]
+layout_mode = 2
+text = "WIN!"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=650933478]
+layout_mode = 2
+text = "Play Again?"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
