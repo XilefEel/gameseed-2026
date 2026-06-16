@@ -41,8 +41,17 @@ texture = ExtResource("5_g4kob")
 
 [node name="Asteroid" type="Node2D" parent="Grid" unique_id=478778595]
 script = ExtResource("6_aug50")
+path = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4), Vector2i(4, 4), Vector2i(4, 5), Vector2i(4, 6), Vector2i(4, 7)])
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/Asteroid" unique_id=1781662766]
+scale = Vector2(0.1998698, 0.1998698)
+texture = ExtResource("7_kiw3p")
+
+[node name="Asteroid2" type="Node2D" parent="Grid" unique_id=477925027]
+script = ExtResource("6_aug50")
+path = Array[Vector2i]([Vector2i(7, 0), Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3), Vector2i(6, 3), Vector2i(5, 3), Vector2i(4, 3), Vector2i(3, 3), Vector2i(3, 4), Vector2i(2, 4), Vector2i(2, 5), Vector2i(2, 6), Vector2i(2, 7), Vector2i(1, 7), Vector2i(0, 7)])
+
+[node name="Sprite2D" type="Sprite2D" parent="Grid/Asteroid2" unique_id=649095393]
 scale = Vector2(0.1998698, 0.1998698)
 texture = ExtResource("7_kiw3p")
 

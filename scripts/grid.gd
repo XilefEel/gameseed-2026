@@ -42,8 +42,8 @@ func mark_path(cell: Vector2i) -> void:
 
 
 func mark_asteroid_path(cells: Array[Vector2i]) -> void:
-	asteroid_path_cells = cells
 	for cell in cells:
+		asteroid_path_cells.append(cell)
 		set_cell(cell, 0, ASTEROID_PATH)
 
 

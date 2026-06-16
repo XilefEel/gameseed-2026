@@ -1,23 +1,13 @@
 extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
-
-var path: Array[Vector2i] = [
-	Vector2i(3,0),
-	Vector2i(3,1),
-	Vector2i(3,2),
-	Vector2i(3,3),
-	Vector2i(3,4),
-	Vector2i(4,4),
-	Vector2i(4,5),
-	Vector2i(4,6),
-	Vector2i(4,7),
-] 
+@export var path: Array[Vector2i] = [] 
 
 var path_index := 0
 
 
 func _ready() -> void:
+	add_to_group("asteroids")
 	position = grid.map_to_local(path[0])
 	grid.mark_asteroid_path(path)
 

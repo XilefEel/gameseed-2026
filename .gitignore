@@ -11,3 +11,5 @@ exports/
 
 .DS_Store
 Thumbs.db
+
+.vscode/
