@@ -6,6 +6,7 @@ const EMPTY := Vector2i(0, 0)
 const START := Vector2i(1, 0)
 const END := Vector2i(2, 0)
 const PATH := Vector2i(0, 1)
+const WALL := Vector2i(0, 2)
 
 var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
@@ -27,6 +28,10 @@ func is_in_bounds(cell: Vector2i) -> bool:
 
 func is_end_cell(cell: Vector2i) -> bool:
 	return cell == end_cell
+
+
+func is_wall(cell: Vector2i) -> bool:
+	return get_cell_atlas_coords(cell) == WALL
 
 
 func mark_path(cell: Vector2i) -> void:

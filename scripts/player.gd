@@ -45,6 +45,9 @@ func move(dir: Vector2i) -> void:
 
 	if not grid.is_in_bounds(next):
 		return
+		
+	if grid.is_wall(next):
+		return 
 	
 	var previous = path[-2] if path.size() >= 2 else null
 
