@@ -25,24 +25,49 @@ func move(dir: Vector2i) -> void:
 		await hazards.game_over()
 		return
 
-	var cost = 2 if hazards.is_in_yellow_zone(player.current_cell) else 1
-
-	if player.moves_left < cost:
-		return
-
+	await move_to_cell(next)
+	
 	var prev_cells = hazards.step_asteroids()
-	player.current_cell = next
-	await move_to_cell(player.current_cell)
-
 	if hazards.check_asteroid_collisions(prev_cells, player.current_cell):
 		await hazards.game_over()
 		return
-	
-	player.moves_left -= cost
 
+	if !try_consume_move():
+		return
+	
 	if grid.is_end_cell(player.current_cell):
 		await hazards.win()
 
+	if player.moves_left <= 0:
+		await hazards.game_over()
+		return
+
+
+func move_to_cell(new_cell: Vector2i) -> void:
+	player.current_cell = new_cell
+	player.is_moving = true
+	
+	var target = grid.map_to_local(new_cell)
+	var duration = player.position.distance_to(target) / player.MOVE_SPEED
+	
+	await create_tween().tween_property(
+		player,
+		"position",
+		target,
+		duration
+	).finished
+
+	player.is_moving = false
+
+
+func try_consume_move() -> bool:
+	var cost = 2 if hazards.is_in_yellow_zone(player.current_cell) else 1
+	if player.moves_left < cost:
+		return false
+
+	player.moves_left -= cost
+	return true
+	
 
 func dash(dir: Vector2i) -> void:
 	if player.dashes_left <= 0 or player.moves_left <= 0:
@@ -80,53 +105,48 @@ func dash(dir: Vector2i) -> void:
 
 	for cell in dash_path:
 		if not grid.is_in_bounds(cell) or grid.is_wall(cell) or hazards.is_on_blackhole(cell):
-			player.current_cell = cell if grid.is_in_bounds(cell) else dash_path[-2]
-			
-			await move_to_cell(player.current_cell)
+			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
 			await hazards.game_over()
 			return
 
 		for a in hazards.asteroids:
 			if a.get_cell() == cell:
-				player.current_cell = cell
-				
-				await move_to_cell(player.current_cell)
+				await move_to_cell(cell)
 				await hazards.game_over()
 				return
 
-	player.current_cell = dash_path[-1]
-	await move_to_cell(player.current_cell)
+	await move_to_cell(dash_path[-1])
 	player.dashes_left -= 1
 
-	var cost = 2 if hazards.is_in_yellow_zone(player.current_cell) else 1
-	player.moves_left -= cost
+	if !try_consume_move():
+		return
 
 	if grid.is_end_cell(player.current_cell):
 		await hazards.win()
 
-
-func move_to_cell(cell: Vector2i) -> void:
-	player.is_moving = true
-	
-	var target = grid.map_to_local(cell)
-	var duration = player.position.distance_to(target) / player.MOVE_SPEED
-	
-	await create_tween().tween_property(
-		player,
-		"position",
-		target,
-		duration
-	).finished
-
-	player.is_moving = false
+	if player.moves_left <= 0:
+		await hazards.game_over()
+		return
 
 
 func recharge() -> void:
-	if player.moves_left <= 0 or player.dashes_left >= 3 :
+	if player.dashes_left >= 3 or player.moves_left <= 0:
+		return
+
+	var prev_cells = hazards.step_asteroids()
+	if hazards.check_asteroid_collisions(prev_cells, player.current_cell):
+		await hazards.game_over()
+		return
+
+	if hazards.is_in_red_zone(player.current_cell):
+		await get_sucked_in()
 		return
 
 	player.dashes_left += 1
 	player.moves_left -= 1
+
+	if player.moves_left <= 0:
+		await hazards.game_over()
 
 
 func get_curve_direction(dir: Vector2i, blackhole: Vector2i) -> Vector2i:
@@ -140,6 +160,7 @@ func get_curve_direction(dir: Vector2i, blackhole: Vector2i) -> Vector2i:
 		return Vector2i(dir.y, -dir.x)
 	
 	return Vector2i.ZERO
+
 
 func get_sucked_in() -> void:
 	player.is_moving = true
@@ -156,4 +177,5 @@ func get_sucked_in() -> void:
 				duration
 			).finished
 
+	player.is_moving = false
 	await hazards.game_over()

@@ -11,7 +11,7 @@ const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
 
-var moves_left := 150 :
+var moves_left := 12 :
 	set(value):
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
