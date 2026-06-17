@@ -66,11 +66,11 @@ offset_left = 978.0
 offset_top = 321.0
 offset_right = 1085.0
 offset_bottom = 344.0
-text = "MOVES LEFT: "
+text = "MOVES LEFT:"
 
-[node name="ChargesLeft" type="Label" parent="UI" unique_id=858241789]
+[node name="DashesLeft" type="Label" parent="UI" unique_id=858241789]
 offset_left = 978.0
 offset_top = 346.0
 offset_right = 1059.0
 offset_bottom = 369.0
-text = "CHARGES: "
+text = "DASHES LEFT:"

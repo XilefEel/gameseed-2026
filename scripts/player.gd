@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
 @onready var move_label := $"../../UI/MovesLeft"
-@onready var charge_label := $"../../UI/ChargesLeft"
+@onready var dashes_label := $"../../UI/DashesLeft"
 
 const MOVE_SPEED := 200.0
 var is_moving := false
@@ -13,10 +13,10 @@ var moves_left := 15 :
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
 
-var charges_left := 3 :
+var dashes_left := 3 :
 	set(value):
-		charges_left = value
-		charge_label.text = "DASHES LEFT: %d" % charges_left
+		dashes_left = value
+		dashes_label.text = "DASHES LEFT: %d" % dashes_left
 
 var asteroids :Array :
 	get:
@@ -27,11 +27,15 @@ func _ready() -> void:
 	current_cell = grid.start_cell
 	position = grid.map_to_local(current_cell)
 	moves_left = moves_left
-	charges_left = charges_left
+	dashes_left = dashes_left
 
 
 func _unhandled_input(event) -> void:
 	if is_moving:
+		return
+
+	if Input.is_physical_key_pressed(KEY_E):
+		recharge()
 		return
 
 	var dir := Vector2i.ZERO
@@ -58,7 +62,7 @@ func move(dir: Vector2i) -> void:
 		return
 
 	if moves_left <= 0:
-		game_over()
+		await game_over()
 		return
 
 	var prev_cells = step_asteroids()
@@ -66,17 +70,17 @@ func move(dir: Vector2i) -> void:
 	await move_to_cell(current_cell)
 
 	if check_asteroid_collisions(prev_cells):
-		game_over()
+		await game_over()
 		return
 	
 	moves_left -= 1
 
 	if grid.is_end_cell(current_cell):
-		get_tree().change_scene_to_file("res://scenes/Win.tscn")
+		await win()
 
 
 func dash(dir: Vector2i) -> void:
-	if charges_left <= 0 or moves_left <= 0:
+	if dashes_left <= 0 or moves_left <= 0:
 		return
 
 	var _prev_cells = step_asteroids()
@@ -85,21 +89,25 @@ func dash(dir: Vector2i) -> void:
 		var next := current_cell + dir * i
 
 		if not grid.is_in_bounds(next) or grid.is_wall(next):
-			game_over()
+			current_cell = next if grid.is_in_bounds(next) else current_cell + dir * (i - 1)
+			await move_to_cell(current_cell)
+			await game_over()
 			return
 
 		for a in asteroids:
 			if a.get_cell() == next:
-				game_over()
+				current_cell = next
+				await move_to_cell(current_cell)
+				await game_over()
 				return
 
 	current_cell += dir * 3
 	await move_to_cell(current_cell)
-	charges_left -= 1
+	dashes_left -= 1
 	moves_left -= 1
 
 	if grid.is_end_cell(current_cell):
-		get_tree().change_scene_to_file("res://scenes/Win.tscn")
+		await win()
 
 
 func move_to_cell(cell: Vector2i) -> void:
@@ -138,6 +146,13 @@ func check_asteroid_collisions(prev_cells: Dictionary) -> bool:
 
 	return false
 
+func recharge() -> void:
+	if moves_left <= 0 or dashes_left >= 3 :
+		return
+
+	dashes_left += 1
+	moves_left -= 1
+
 
 func game_over() -> void:
 	await get_tree().create_timer(0.3).timeout
@@ -145,4 +160,5 @@ func game_over() -> void:
 
 
 func win() -> void:
+	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://scenes/Win.tscn")
