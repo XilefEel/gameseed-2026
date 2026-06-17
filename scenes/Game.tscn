@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhbpvkci3r5c2" path="res://assets/tileset-asset.png" id="2_aug50"]
 [ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/menu/grid.gd" id="3_kiw3p"]
 [ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/player/player.gd" id="4_400sg"]
-[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://assets/icon.svg" id="5_g4kob"]
+[ext_resource type="Texture2D" uid="uid://wyx8olo8tifw" path="res://assets/ojol.png" id="5_3xj3m"]
 [ext_resource type="Script" uid="uid://cah2dtdv5libh" path="res://scripts/hazards/asteroid.gd" id="6_aug50"]
 [ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/player_hazards.gd" id="6_qy1jj"]
 [ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/player_movement.gd" id="7_3xj3m"]
@@ -39,9 +39,9 @@ script = ExtResource("3_kiw3p")
 script = ExtResource("4_400sg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/Player" unique_id=862988754]
-position = Vector2(-1.1920929e-07, 0)
-scale = Vector2(0.0756836, 0.0756836)
-texture = ExtResource("5_g4kob")
+position = Vector2(0, -9.536743e-07)
+scale = Vector2(0.006016007, 0.0060160058)
+texture = ExtResource("5_3xj3m")
 
 [node name="Hazards" type="Node" parent="Grid/Player" unique_id=1015663379]
 script = ExtResource("6_qy1jj")
@@ -69,8 +69,8 @@ texture = ExtResource("7_kiw3p")
 script = ExtResource("8_g4kob")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grid/Blackhole" unique_id=1859737492]
-position = Vector2(0, 1.1920929e-07)
-scale = Vector2(0.04899998, 0.04899998)
+position = Vector2(0, -1.4901161e-08)
+scale = Vector2(0.05425, 0.05425)
 texture = ExtResource("9_qy1jj")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
@@ -85,10 +85,3 @@ offset_top = 321.0
 offset_right = 1085.0
 offset_bottom = 344.0
 text = "MOVES LEFT:"
-
-[node name="DashesLeft" type="Label" parent="UI" unique_id=858241789]
-offset_left = 978.0
-offset_top = 346.0
-offset_right = 1059.0
-offset_bottom = 369.0
-text = "DASHES LEFT:"

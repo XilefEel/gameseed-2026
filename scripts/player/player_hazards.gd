@@ -15,23 +15,16 @@ func _ready() -> void:
 	player = get_parent()
 
 
-func step_asteroids() -> Dictionary:
-	var prev_cells := {}
-	
+func step_asteroids() -> void:
 	for a in asteroids:
-		prev_cells[a] = a.get_cell()
 		a.step()
 
-	return prev_cells
 
-func check_asteroid_collisions(prev_cells: Dictionary, cell: Vector2i) -> bool:
+func is_asteroid_at(cell: Vector2i) -> bool:
 	for a in asteroids:
-		var hit = a.get_cell() == cell
-		var swapped = prev_cells[a] == cell
-		
-		if hit or swapped:
+		if a.get_cell() == cell:
 			return true
-
+			
 	return false
 
 
@@ -60,10 +53,10 @@ func is_in_yellow_zone(cell: Vector2i) -> bool:
 
 
 func game_over() -> void:
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 
 
 func win() -> void:
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/Win.tscn")
