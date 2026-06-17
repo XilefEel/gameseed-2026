@@ -34,7 +34,7 @@ func _unhandled_input(event) -> void:
 		return
 
 	if Input.is_physical_key_pressed(KEY_E):
-		recharge()
+		movement.recharge()
 		return
 
 	var dir := Vector2i.ZERO
@@ -53,11 +53,3 @@ func _unhandled_input(event) -> void:
 			movement.dash(dir)
 		else:
 			movement.move(dir)
-
-
-func recharge() -> void:
-	if moves_left <= 0 or dashes_left >= 3 :
-		return
-
-	dashes_left += 1
-	moves_left -= 1
