@@ -8,7 +8,7 @@ const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
 
-var moves_left := 15 :
+var moves_left := 150 :
 	set(value):
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
@@ -21,6 +21,10 @@ var dashes_left := 3 :
 var asteroids :Array :
 	get:
 		return get_tree().get_nodes_in_group("asteroids")
+
+var blackholes: Array :
+	get:
+		return get_tree().get_nodes_in_group("blackholes")
 
 
 func _ready() -> void:
@@ -61,19 +65,29 @@ func move(dir: Vector2i) -> void:
 	if not grid.is_in_bounds(next) or grid.is_wall(next):
 		return
 
-	if moves_left <= 0:
-		await game_over()
+	for b in blackholes:
+		if b.is_on_blackhole(next):
+			await game_over()
+			return
+
+	var cost = 1
+	for b in blackholes:
+		if b.is_yellow_zone(current_cell) or b.is_red_zone(current_cell):
+			cost = 2
+			break
+
+	if moves_left < cost:
 		return
 
-	var prev_cells = step_asteroids()
+	# var prev_cells = step_asteroids()
 	current_cell = next
 	await move_to_cell(current_cell)
 
-	if check_asteroid_collisions(prev_cells):
-		await game_over()
-		return
+	# if check_asteroid_collisions(prev_cells):
+	# 	await game_over()
+	# 	return
 	
-	moves_left -= 1
+	moves_left -= cost
 
 	if grid.is_end_cell(current_cell):
 		await win()
