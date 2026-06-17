@@ -1,3 +1,4 @@
+class_name BlackHole
 extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()

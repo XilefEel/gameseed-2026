@@ -1,3 +1,4 @@
+class_name Grid
 extends TileMapLayer
 
 const GRID_SIZE := 8

@@ -1,3 +1,4 @@
+class_name Asteroid
 extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
