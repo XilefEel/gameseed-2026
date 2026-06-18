@@ -15,27 +15,18 @@ const PORTAL_OUT := Vector2i(1, 3)
 var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
 
-var portals := {
-	Vector2i(1, 1): {
-		"exit": Vector2i(6, 5),
-		"dir": Vector2i.RIGHT,
-		"exit_dir": Vector2i.UP
-	},
-	Vector2i(7, 2): {
-		"exit": Vector2i(0, 7),
-		"dir": Vector2i.RIGHT,
-		"exit_dir": Vector2i.UP
-	},
-}
+var portals := {}
 
 
 func _ready() -> void:
 	set_cell(start_cell, 0, START)
 	set_cell(end_cell, 0, END)
 
+	add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
+	add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
+
 	for cell in portals.keys():
 		set_cell(cell, 0, PORTAL_IN, get_portal_transform(portals[cell]["dir"]))
-		set_cell(portals[cell]["exit"], 0, PORTAL_OUT, get_portal_transform(portals[cell]["exit_dir"]))
 
 
 func is_in_bounds(cell: Vector2i) -> bool:
@@ -57,6 +48,11 @@ func is_debris(cell: Vector2i) -> bool:
 
 func is_house(cell: Vector2i) -> bool:
 	return get_cell_atlas_coords(cell) == HOUSE
+
+
+func add_portal_pair(a: Vector2i, a_dir: Vector2i, b: Vector2i, b_dir: Vector2i) -> void:
+	portals[a] = {"exit": b, "dir": a_dir, "exit_dir": b_dir}
+	portals[b] = {"exit": a, "dir": -b_dir, "exit_dir": -a_dir}
 
 
 func is_portal(cell: Vector2i) -> bool:

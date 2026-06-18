@@ -114,39 +114,9 @@ func dash(dir: Vector2i) -> void:
 				found_blackhole = true
 				break
 
-	var used_portal := false
-
-	if curve == Vector2i.ZERO:
-		var current_dir = dir
-		var current_pos = player.current_cell
-
-		for i in range(1, dash_length + 1):
-			var next_cell = current_pos + current_dir
-
-			if grid.is_portal(next_cell) and grid.get_portal(next_cell)["dir"] == current_dir:
-				var portal = grid.get_portal(next_cell)
-				var landing = portal["exit"] + portal["exit_dir"]
-
-				dash_path.append(landing)
-				current_pos = landing
-				current_dir = portal["exit_dir"]
-
-				used_portal = true
-			else:
-				dash_path.append(next_cell)
-				current_pos = next_cell
-	else:
-		if dash_length == 2:
-			dash_path = [
-				player.current_cell + dir,
-				player.current_cell + dir + curve
-			]
-		else:
-			dash_path = [
-				player.current_cell + dir,
-				player.current_cell + dir * 2,
-				player.current_cell + dir * 2 + curve
-			]
+	var dash_info = build_dash_path(dir, dash_length, curve)
+	dash_path = dash_info["path"]
+	var used_portal = dash_info["used_portal"]
 
 	for cell in dash_path:
 		for p in hazards.pirates:
@@ -200,6 +170,53 @@ func dash(dir: Vector2i) -> void:
 	if player.moves_left <= 0:
 		await hazards.game_over()
 		return
+
+
+func build_dash_path(dir: Vector2i, dash_length: int, curve: Vector2i) -> Dictionary:
+	if curve != Vector2i.ZERO:
+		if dash_length == 2:
+			return {
+				"path": [
+					player.current_cell + dir,
+					player.current_cell + dir + curve
+				],
+				"used_portal": false
+			}
+		else:
+			return {
+				"path": [
+					player.current_cell + dir,
+					player.current_cell + dir * 2,
+					player.current_cell + dir * 2 + curve
+				],
+				"used_portal": false
+			}
+
+	var path := []
+	var current_dir = dir
+	var current_pos = player.current_cell
+	var used_portal := false
+
+	for i in range(1, dash_length + 1):
+		var next_cell = current_pos + current_dir
+
+		if grid.is_portal(next_cell) and grid.get_portal(next_cell)["dir"] == current_dir:
+			var portal = grid.get_portal(next_cell)
+			var landing = portal["exit"] + portal["exit_dir"]
+
+			path.append(landing)
+			current_pos = landing
+			current_dir = portal["exit_dir"]
+
+			used_portal = true
+		else:
+			path.append(next_cell)
+			current_pos = next_cell
+
+	return {
+		"path": path,
+		"used_portal": used_portal
+	}
 
 
 func get_curve_direction(dir: Vector2i, blackhole: Vector2i) -> Vector2i:
