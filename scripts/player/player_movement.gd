@@ -18,7 +18,9 @@ func move(dir: Vector2i) -> void:
 		return
 
 	var next = player.current_cell + dir
-	if not grid.is_in_bounds(next) or grid.is_debris(next):
+	var wrong_portal_side = grid.is_portal(next) and grid.get_portal(next)["dir"] != dir
+
+	if not grid.is_in_bounds(next) or grid.is_debris(next) or grid.is_house(next) or wrong_portal_side:
 		return
 
 	if hazards.is_on_blackhole(next):
