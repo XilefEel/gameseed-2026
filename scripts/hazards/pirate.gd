@@ -67,3 +67,17 @@ func step(player_cell: Vector2i) -> void:
 		target_pos,
 		duration
 	)
+
+	for a in get_tree().get_nodes_in_group("asteroids"):
+		if a.get_next_cell() == cell:
+			die()
+			return
+
+	for b in get_tree().get_nodes_in_group("blackholes"):
+		if b.is_on_blackhole(cell):
+			die()
+			return
+
+
+func die() -> void:
+	queue_free()

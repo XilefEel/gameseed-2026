@@ -25,7 +25,10 @@ func move(dir: Vector2i) -> void:
 		await hazards.game_over()
 		return
 
-	await move_to_cell(next)
+	if not hazards.is_asteroid_at(next) and not hazards.is_pirate_at(next):
+		player.current_cell = next
+
+	await move_to_cell(player.current_cell)
 
 	hazards.step_pirates(player.current_cell)
 
@@ -33,13 +36,13 @@ func move(dir: Vector2i) -> void:
 		await hazards.game_over()
 		return
 
+	hazards.step_asteroids()
+
 	if hazards.is_asteroid_at(player.current_cell):
 		await hazards.game_over()
 		return
 
-	hazards.step_asteroids()
-		
-	if !try_consume_move():
+	if not try_consume_move():
 		return
 	
 	if grid.is_end_cell(player.current_cell):
@@ -142,7 +145,7 @@ func dash(dir: Vector2i) -> void:
 
 	hazards.step_asteroids()
 
-	if !try_consume_move():
+	if not try_consume_move():
 		return
 
 	if grid.is_end_cell(player.current_cell):

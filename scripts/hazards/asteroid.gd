@@ -31,3 +31,7 @@ func step() -> void:
 
 func get_cell() -> Vector2i:
 	return path[path_index]
+
+
+func get_next_cell() -> Vector2i:
+	return path[(path_index + 1) % path.size()]
