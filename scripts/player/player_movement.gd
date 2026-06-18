@@ -27,6 +27,12 @@ func move(dir: Vector2i) -> void:
 
 	await move_to_cell(next)
 
+	hazards.step_pirates(player.current_cell)
+	
+	if hazards.is_pirate_at(player.current_cell):
+		await hazards.game_over()
+		return
+
 	if hazards.is_asteroid_at(player.current_cell):
 		await hazards.game_over()
 		return
@@ -119,6 +125,12 @@ func dash(dir: Vector2i) -> void:
 			return
 
 	await move_to_cell(dash_path[-1])
+
+	hazards.step_pirates(player.current_cell)
+
+	if hazards.is_pirate_at(player.current_cell):
+		await hazards.game_over()
+		return
 
 	hazards.step_asteroids()
 

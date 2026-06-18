@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b7oqufhjxe2im" path="res://assets/rock.png" id="7_kiw3p"]
 [ext_resource type="Script" uid="uid://dm8m5g38ga4jw" path="res://scripts/hazards/blackhole.gd" id="8_g4kob"]
 [ext_resource type="Texture2D" uid="uid://dg1esfdmpoen8" path="res://assets/Ton618.png" id="9_qy1jj"]
+[ext_resource type="Script" uid="uid://7p2p8ameynj0" path="res://scripts/hazards/pirate.gd" id="12_2rd6h"]
+[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://assets/icon.svg" id="13_7ua8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kiw3p"]
 texture = ExtResource("2_aug50")
@@ -72,6 +74,14 @@ script = ExtResource("8_g4kob")
 position = Vector2(0, -1.4901161e-08)
 scale = Vector2(0.05425, 0.05425)
 texture = ExtResource("9_qy1jj")
+
+[node name="Pirate" type="Node2D" parent="Grid" unique_id=594918711]
+script = ExtResource("12_2rd6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grid/Pirate" unique_id=1125442327]
+position = Vector2(1.7881393e-07, -1.7881393e-07)
+scale = Vector2(0.106445305, 0.106445305)
+texture = ExtResource("13_7ua8r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
 position = Vector2(61, 63)
