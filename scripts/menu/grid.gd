@@ -16,10 +16,10 @@ var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
 
 var portals := {
-    Vector2i(1, 1): {
+	Vector2i(1, 1): {
 		"exit": Vector2i(6, 5),
 		"dir": Vector2i.RIGHT,
-		"exit_dir": Vector2i.DOWN
+		"exit_dir": Vector2i.UP
 	},
 	Vector2i(7, 2): {
 		"exit": Vector2i(0, 7),

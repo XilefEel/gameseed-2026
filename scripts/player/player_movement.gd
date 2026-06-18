@@ -30,14 +30,7 @@ func move(dir: Vector2i) -> void:
 
 
 	if grid.is_portal(next) and grid.get_portal(next)["dir"] == dir:
-		var portal = grid.get_portal(next)
-		var landing = portal["exit"] + portal["exit_dir"]
-
-		if not grid.is_in_bounds(landing) or grid.is_debris(landing) or grid.is_house(landing):
-			return
-		
-		player.current_cell = landing
-		player.position = grid.map_to_local(landing)
+		move_through_portal()
 	else:
 		await move_to_cell(player.current_cell)
 
@@ -79,6 +72,17 @@ func move_to_cell(new_cell: Vector2i) -> void:
 	player.is_moving = false
 
 
+func move_through_portal() -> void:
+	var portal = grid.get_portal(player.current_cell)
+	var landing = portal["exit"] + portal["exit_dir"]
+
+	if not grid.is_in_bounds(landing) or grid.is_debris(landing) or grid.is_house(landing):
+		return
+	
+	player.current_cell = landing
+	player.position = grid.map_to_local(landing)
+
+
 func try_consume_move() -> bool:
 	var cost = 2 if hazards.is_in_yellow_zone(player.current_cell) else 1
 	if player.moves_left < cost:
@@ -109,10 +113,28 @@ func dash(dir: Vector2i) -> void:
 				curve = get_curve_direction(dir, b.cell)
 				found_blackhole = true
 				break
-	
+
+	var used_portal := false
+
 	if curve == Vector2i.ZERO:
+		var current_dir = dir
+		var current_pos = player.current_cell
+
 		for i in range(1, dash_length + 1):
-			dash_path.append(player.current_cell + dir * i)
+			var next_cell = current_pos + current_dir
+
+			if grid.is_portal(next_cell) and grid.get_portal(next_cell)["dir"] == current_dir:
+				var portal = grid.get_portal(next_cell)
+				var landing = portal["exit"] + portal["exit_dir"]
+
+				dash_path.append(landing)
+				current_pos = landing
+				current_dir = portal["exit_dir"]
+
+				used_portal = true
+			else:
+				dash_path.append(next_cell)
+				current_pos = next_cell
 	else:
 		if dash_length == 2:
 			dash_path = [
@@ -144,7 +166,11 @@ func dash(dir: Vector2i) -> void:
 			await hazards.game_over()
 			return
 
-	await move_to_cell(dash_path[-1])
+	if used_portal:
+		player.current_cell = dash_path[-1]
+		player.position = grid.map_to_local(dash_path[-1])
+	else:
+		await move_to_cell(dash_path[-1])
 
 	var behind = start_cell - dir
 	
