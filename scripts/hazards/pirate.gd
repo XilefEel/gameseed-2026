@@ -27,7 +27,7 @@ func check_line_of_sight(player_cell: Vector2i) -> void:
 
 	var check_cell := cell + dir
 	while check_cell != player_cell:
-		if grid.is_wall(check_cell):
+		if grid.is_debris(check_cell):
 			return
 
 		check_cell += dir
@@ -44,7 +44,7 @@ func setup_astar() -> void:
 	for x in grid.GRID_SIZE:
 		for y in grid.GRID_SIZE:
 			var c := Vector2i(x, y)
-			if not grid.is_wall(c):
+			if not grid.is_debris(c):
 				astar.set_point_solid(c, false)
 
 

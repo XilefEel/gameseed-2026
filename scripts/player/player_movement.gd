@@ -18,7 +18,7 @@ func move(dir: Vector2i) -> void:
 		return
 
 	var next = player.current_cell + dir
-	if not grid.is_in_bounds(next) or grid.is_wall(next):
+	if not grid.is_in_bounds(next) or grid.is_debris(next):
 		return
 
 	if hazards.is_on_blackhole(next):
@@ -83,6 +83,7 @@ func dash(dir: Vector2i) -> void:
 	if player.moves_left <= 0:
 		return
 
+	var start_cell = player.current_cell
 	var dash_path := []
 	var dash_length = 2 if hazards.is_in_red_zone(player.current_cell) else 3
 	var curve := Vector2i.ZERO
@@ -124,7 +125,7 @@ func dash(dir: Vector2i) -> void:
 			await move_to_cell(dash_path[dash_path.find(cell) - 1])
 			return
 		
-		if grid.is_wall(cell) or hazards.is_on_blackhole(cell):
+		if grid.is_debris(cell) or hazards.is_on_blackhole(cell):
 			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
 			await hazards.game_over()
 			return
@@ -134,8 +135,18 @@ func dash(dir: Vector2i) -> void:
 			await hazards.game_over()
 			return
 
-
 	await move_to_cell(dash_path[-1])
+
+	var behind = start_cell - dir
+	
+	if grid.is_in_bounds(behind):
+		if grid.is_debris(behind):
+			grid.set_cell(behind, 0, grid.EMPTY)
+			
+		elif grid.is_house(behind):
+			grid.set_cell(behind, 0, grid.EMPTY)
+			await hazards.game_over()
+			return
 
 	hazards.step_pirates(player.current_cell)
 

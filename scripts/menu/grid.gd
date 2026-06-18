@@ -7,7 +7,8 @@ const EMPTY := Vector2i(0, 0)
 const START := Vector2i(1, 0)
 const END := Vector2i(2, 0)
 const ASTEROID_PATH := Vector2i(1, 1)
-const WALL := Vector2i(0, 2)
+const DEBRIS := Vector2i(0, 2)
+const HOUSE := Vector2i(1, 2)
 
 var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
@@ -30,8 +31,12 @@ func is_end_cell(cell: Vector2i) -> bool:
 	return cell == end_cell
 
 
-func is_wall(cell: Vector2i) -> bool:
-	return get_cell_atlas_coords(cell) == WALL
+func is_debris(cell: Vector2i) -> bool:
+	return get_cell_atlas_coords(cell) == DEBRIS
+
+
+func is_house(cell: Vector2i) -> bool:
+	return get_cell_atlas_coords(cell) == HOUSE
 
 
 func mark_asteroid_path(cells: Array[Vector2i]) -> void:
