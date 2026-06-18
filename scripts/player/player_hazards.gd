@@ -35,8 +35,8 @@ func is_asteroid_at(cell: Vector2i) -> bool:
 
 func step_pirates(player_cell: Vector2i) -> void:
 	for p in pirates:
-		p.check_line_of_sight(player_cell)
 		p.step(player_cell)
+		p.check_line_of_sight(player_cell)
 
 
 func is_pirate_at(cell: Vector2i) -> bool:

@@ -15,7 +15,18 @@ func _ready() -> void:
 
 func step() -> void:
 	path_index = (path_index + 1) % path.size()
-	position = grid.map_to_local(path[path_index])
+	var target_pos = grid.map_to_local(path[path_index])
+	var duration = position.distance_to(target_pos) / 200.0
+
+	if path_index == 0:
+		position = target_pos
+	else:
+		create_tween().tween_property(
+			self,
+			"position",
+			target_pos,
+			duration
+		)
 
 
 func get_cell() -> Vector2i:

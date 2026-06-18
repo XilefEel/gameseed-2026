@@ -28,7 +28,7 @@ func move(dir: Vector2i) -> void:
 	await move_to_cell(next)
 
 	hazards.step_pirates(player.current_cell)
-	
+
 	if hazards.is_pirate_at(player.current_cell):
 		await hazards.game_over()
 		return
@@ -114,15 +114,23 @@ func dash(dir: Vector2i) -> void:
 			]
 
 	for cell in dash_path:
-		if not grid.is_in_bounds(cell) or grid.is_wall(cell) or hazards.is_on_blackhole(cell):
+		for p in hazards.pirates:
+			p.check_line_of_sight(cell)
+
+		if not grid.is_in_bounds(cell):
+			await move_to_cell(dash_path[dash_path.find(cell) - 1])
+			return
+		
+		if grid.is_wall(cell) or hazards.is_on_blackhole(cell):
 			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
 			await hazards.game_over()
 			return
 
-		if hazards.is_asteroid_at(cell):
+		if hazards.is_asteroid_at(cell) or hazards.is_pirate_at(cell):
 			await move_to_cell(cell)
 			await hazards.game_over()
 			return
+
 
 	await move_to_cell(dash_path[-1])
 

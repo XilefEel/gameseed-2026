@@ -29,10 +29,11 @@ func check_line_of_sight(player_cell: Vector2i) -> void:
 	while check_cell != player_cell:
 		if grid.is_wall(check_cell):
 			return
-			
+
 		check_cell += dir
 
 	is_chasing = true
+
 
 func setup_astar() -> void:
 	astar.region = Rect2i(0, 0, grid.GRID_SIZE, grid.GRID_SIZE)
@@ -46,6 +47,7 @@ func setup_astar() -> void:
 			if not grid.is_wall(c):
 				astar.set_point_solid(c, false)
 
+
 func step(player_cell: Vector2i) -> void:
 	if not is_chasing:
 		return
@@ -56,4 +58,12 @@ func step(player_cell: Vector2i) -> void:
 		return
 
 	cell = Vector2i(path[1])
-	position = grid.map_to_local(cell)
+	var target_pos = grid.map_to_local(cell)
+	var duration = position.distance_to(target_pos) / 200.0
+
+	create_tween().tween_property(
+		self,
+		"position",
+		target_pos,
+		duration
+	)
