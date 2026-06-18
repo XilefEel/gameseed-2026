@@ -28,16 +28,25 @@ func move(dir: Vector2i) -> void:
 	if not hazards.is_asteroid_at(next) and not hazards.is_pirate_at(next):
 		player.current_cell = next
 
-	await move_to_cell(player.current_cell)
+
+	if grid.is_portal(next) and grid.get_portal(next)["dir"] == dir:
+		var portal = grid.get_portal(next)
+		var landing = portal["exit"] + portal["exit_dir"]
+
+		if not grid.is_in_bounds(landing) or grid.is_debris(landing) or grid.is_house(landing):
+			return
+		
+		player.current_cell = landing
+		player.position = grid.map_to_local(landing)
+	else:
+		await move_to_cell(player.current_cell)
 
 	hazards.step_pirates(player.current_cell)
-
 	if hazards.is_pirate_at(player.current_cell):
 		await hazards.game_over()
 		return
 
 	hazards.step_asteroids()
-
 	if hazards.is_asteroid_at(player.current_cell):
 		await hazards.game_over()
 		return
@@ -125,7 +134,7 @@ func dash(dir: Vector2i) -> void:
 			await move_to_cell(dash_path[dash_path.find(cell) - 1])
 			return
 		
-		if grid.is_debris(cell) or hazards.is_on_blackhole(cell):
+		if grid.is_debris(cell) or grid.is_house(cell) or hazards.is_on_blackhole(cell):
 			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
 			await hazards.game_over()
 			return
