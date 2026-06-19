@@ -1,6 +1,8 @@
 class_name Grid
 extends TileMapLayer
 
+@onready var camera: Camera2D = $"../Camera2D"
+
 signal grid_ready
 
 const EMPTY := Vector2i(0, 0)
@@ -23,6 +25,7 @@ func _ready() -> void:
 	clear()
 	LevelLoader.load_level("res://levels/level_01.json", self)
 	draw_grid()
+	camera.setup_camera(size)
 	# add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
 	# add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
 	

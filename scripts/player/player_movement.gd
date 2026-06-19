@@ -46,12 +46,13 @@ func move(dir: Vector2i) -> void:
 		await hazards.game_over()
 		return
 
-	if not try_consume_move():
-		return
-	
 	if grid.is_end_cell(player.current_cell):
 		await hazards.win()
+		return
 
+	if not try_consume_move():
+		return
+		
 	if player.moves_left <= 0:
 		await hazards.game_over()
 		return
@@ -163,11 +164,12 @@ func dash(dir: Vector2i) -> void:
 
 	hazards.step_asteroids()
 
-	if not try_consume_move():
-		return
-
 	if grid.is_end_cell(player.current_cell):
 		await hazards.win()
+		return
+
+	if not try_consume_move():
+		return
 
 	if player.moves_left <= 0:
 		await hazards.game_over()

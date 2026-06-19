@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://wyx8olo8tifw" path="res://assets/ojol.png" id="5_3xj3m"]
 [ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/player_hazards.gd" id="6_qy1jj"]
 [ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/player_movement.gd" id="7_3xj3m"]
+[ext_resource type="Script" uid="uid://pv7kbvkt0f0u" path="res://scripts/camera.gd" id="8_400sg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
 texture = ExtResource("2_aug50")
@@ -51,6 +52,7 @@ script = ExtResource("7_3xj3m")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
 position = Vector2(80, 80)
 zoom = Vector2(4, 4)
+script = ExtResource("8_400sg")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1107248740]
 
