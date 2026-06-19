@@ -38,13 +38,13 @@ func check_line_of_sight(player_cell: Vector2i) -> void:
 func setup_astar() -> void:
 	await grid.grid_ready
 
-	astar.region = Rect2i(0, 0, grid.GRID_SIZE, grid.GRID_SIZE)
+	astar.region = Rect2i(0, 0, grid.size, grid.size)
 	astar.cell_size = Vector2(1, 1)
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar.update()
 
-	for x in range(grid.GRID_SIZE):
-		for y in range(grid.GRID_SIZE):
+	for x in range(grid.size):
+		for y in range(grid.size):
 			var c := Vector2i(x, y)
 			if  grid.is_debris(c) or grid.is_house(c) or grid.is_portal(c):
 				astar.set_point_solid(c)

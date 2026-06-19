@@ -3,8 +3,6 @@ extends TileMapLayer
 
 signal grid_ready
 
-const GRID_SIZE := 8
-
 const EMPTY := Vector2i(0, 0)
 const START := Vector2i(1, 0)
 const END := Vector2i(2, 0)
@@ -16,19 +14,19 @@ const PORTAL_OUT := Vector2i(1, 3)
 
 var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
+var size := 8
 
 var portals := {}
 
 
 func _ready() -> void:
-	set_cell(start_cell, 0, START)
-	set_cell(end_cell, 0, END)
+	LevelLoader.load_level("res://levels/level_01.json", self)
 
-	add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
-	add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
+	# add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
+	# add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
 	
-	for cell in portals.keys():
-		set_cell(cell, 0, PORTAL_IN, get_portal_transform(portals[cell]["dir"]))
+	# for cell in portals.keys():
+	# 	set_cell(cell, 0, PORTAL_IN, get_portal_transform(portals[cell]["dir"]))
 
 	grid_ready.emit()
 
@@ -36,9 +34,9 @@ func _ready() -> void:
 func is_in_bounds(cell: Vector2i) -> bool:
 	return (
 		cell.x >= 0 and
-		cell.x < GRID_SIZE and
+		cell.x < size and
 		cell.y >= 0 and
-		cell.y < GRID_SIZE
+		cell.y < size
 	)
 
 
