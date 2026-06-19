@@ -5,14 +5,8 @@
 [ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/menu/grid.gd" id="3_kiw3p"]
 [ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/player/player.gd" id="4_400sg"]
 [ext_resource type="Texture2D" uid="uid://wyx8olo8tifw" path="res://assets/ojol.png" id="5_3xj3m"]
-[ext_resource type="Script" uid="uid://cah2dtdv5libh" path="res://scripts/hazards/asteroid.gd" id="6_aug50"]
 [ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/player_hazards.gd" id="6_qy1jj"]
 [ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/player_movement.gd" id="7_3xj3m"]
-[ext_resource type="Texture2D" uid="uid://b7oqufhjxe2im" path="res://assets/rock.png" id="7_kiw3p"]
-[ext_resource type="Script" uid="uid://dm8m5g38ga4jw" path="res://scripts/hazards/blackhole.gd" id="8_g4kob"]
-[ext_resource type="Texture2D" uid="uid://dg1esfdmpoen8" path="res://assets/Ton618.png" id="9_qy1jj"]
-[ext_resource type="Script" uid="uid://7p2p8ameynj0" path="res://scripts/hazards/pirate.gd" id="12_2rd6h"]
-[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://assets/icon.svg" id="13_7ua8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
 texture = ExtResource("2_aug50")
@@ -53,38 +47,6 @@ script = ExtResource("6_qy1jj")
 
 [node name="Movement" type="Node" parent="Grid/Player" unique_id=1398185581]
 script = ExtResource("7_3xj3m")
-
-[node name="Asteroid" type="Node2D" parent="Grid" unique_id=478778595]
-script = ExtResource("6_aug50")
-path = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4), Vector2i(4, 4), Vector2i(4, 5), Vector2i(4, 6), Vector2i(4, 7)])
-
-[node name="Sprite2D" type="Sprite2D" parent="Grid/Asteroid" unique_id=1781662766]
-scale = Vector2(0.1998698, 0.1998698)
-texture = ExtResource("7_kiw3p")
-
-[node name="Asteroid2" type="Node2D" parent="Grid" unique_id=477925027]
-script = ExtResource("6_aug50")
-path = Array[Vector2i]([Vector2i(7, 0), Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3), Vector2i(6, 3), Vector2i(5, 3), Vector2i(4, 3), Vector2i(3, 3), Vector2i(3, 4), Vector2i(2, 4), Vector2i(2, 5), Vector2i(2, 6), Vector2i(2, 7), Vector2i(1, 7), Vector2i(0, 7)])
-
-[node name="Sprite2D" type="Sprite2D" parent="Grid/Asteroid2" unique_id=649095393]
-scale = Vector2(0.1998698, 0.1998698)
-texture = ExtResource("7_kiw3p")
-
-[node name="Blackhole" type="Node2D" parent="Grid" unique_id=290416851]
-script = ExtResource("8_g4kob")
-
-[node name="Sprite2D" type="Sprite2D" parent="Grid/Blackhole" unique_id=1859737492]
-position = Vector2(0, -1.4901161e-08)
-scale = Vector2(0.05425, 0.05425)
-texture = ExtResource("9_qy1jj")
-
-[node name="Pirate" type="Node2D" parent="Grid" unique_id=594918711]
-script = ExtResource("12_2rd6h")
-
-[node name="Sprite2D" type="Sprite2D" parent="Grid/Pirate" unique_id=1125442327]
-position = Vector2(1.7881393e-07, -1.7881393e-07)
-scale = Vector2(0.106445305, 0.106445305)
-texture = ExtResource("13_7ua8r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
 position = Vector2(61, 63)

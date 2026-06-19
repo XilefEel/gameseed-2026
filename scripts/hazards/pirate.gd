@@ -2,7 +2,7 @@ class_name Pirate
 extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
-@export var cell := Vector2i(1, 7)
+var cell := Vector2i(1, 7)
 
 var is_chasing := false
 var astar := AStarGrid2D.new()

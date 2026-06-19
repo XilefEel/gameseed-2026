@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://qmks1gqmjvhj"]
+
+[ext_resource type="Script" uid="uid://cah2dtdv5libh" path="res://scripts/hazards/asteroid.gd" id="1_3suc8"]
+[ext_resource type="Texture2D" uid="uid://b7oqufhjxe2im" path="res://assets/rock.png" id="2_1ve3k"]
+
+[node name="Asteroid" type="Node2D" unique_id=1497965314]
+script = ExtResource("1_3suc8")
+path = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4), Vector2i(4, 4), Vector2i(4, 5), Vector2i(4, 6), Vector2i(4, 7)])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178632769]
+scale = Vector2(0.1998698, 0.1998698)
+texture = ExtResource("2_1ve3k")
