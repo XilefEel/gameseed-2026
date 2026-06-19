@@ -17,9 +17,10 @@ var moves_left := 120 :
 
 
 func _ready() -> void:
+	await grid.grid_ready
+
 	current_cell = grid.start_cell
-	position = grid.map_to_local(current_cell)
-	moves_left = moves_left
+	position = grid.map_to_local(grid.start_cell)
 
 
 func _unhandled_input(event) -> void:

@@ -20,8 +20,9 @@ var portals := {}
 
 
 func _ready() -> void:
+	clear()
 	LevelLoader.load_level("res://levels/level_01.json", self)
-
+	draw_grid()
 	# add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
 	# add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
 	
@@ -29,6 +30,13 @@ func _ready() -> void:
 	# 	set_cell(cell, 0, PORTAL_IN, get_portal_transform(portals[cell]["dir"]))
 
 	grid_ready.emit()
+
+
+func draw_grid() -> void:
+	for x in range(size):
+		for y in range(size):
+			if get_cell_source_id(Vector2i(x, y)) == -1:
+				set_cell(Vector2i(x, y), 0, EMPTY)
 
 
 func is_in_bounds(cell: Vector2i) -> bool:
