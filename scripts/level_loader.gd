@@ -2,13 +2,14 @@ class_name LevelLoader
 
 const PIRATE_SCENE = preload("res://scenes/Pirate.tscn")
 const BLACKHOLE_SCENE = preload("res://scenes/Blackhole.tscn")
+const ASTEROID_SCENE = preload("res://scenes/Asteroid.tscn")
 
 
-static func load_level(path: String, grid: Grid) -> void:
-	var file = FileAccess.open(path, FileAccess.READ)
+static func load_level(file_path: String, grid: Grid) -> void:
+	var file = FileAccess.open(file_path, FileAccess.READ)
 
 	if not file:
-		push_error("Failed to open level file: " + path)
+		push_error("Failed to open level file: " + file_path)
 		return
 	
 	var json = JSON.new()
@@ -42,3 +43,14 @@ static func load_level(path: String, grid: Grid) -> void:
 		var blackhole = BLACKHOLE_SCENE.instantiate()
 		blackhole.cell = Vector2i(b[0], b[1])
 		grid.add_child(blackhole)
+
+	for a in data["asteroids"]:
+		var asteroid = ASTEROID_SCENE.instantiate()
+		var path_data = a["path"]
+
+		var path: Array[Vector2i] = []
+		for p in path_data:
+			path.append(Vector2i(p[0], p[1]))
+
+		asteroid.path = path
+		grid.add_child(asteroid)
