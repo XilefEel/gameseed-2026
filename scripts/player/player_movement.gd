@@ -19,6 +19,7 @@ func move(dir: Vector2i) -> void:
 
 	var next = player.current_cell + dir
 	var wrong_portal_side = grid.is_portal(next) and grid.get_portal(next)["dir"] != dir
+	player.sfx_move.play()
 
 	if not grid.is_in_bounds(next) or grid.is_debris(next) or grid.is_house(next) or wrong_portal_side:
 		return
@@ -120,6 +121,7 @@ func dash(dir: Vector2i) -> void:
 	var dash_info = build_dash_path(dir, dash_length, curve)
 	dash_path = dash_info["path"]
 	var used_portal = dash_info["used_portal"]
+	player.sfx_dash.play()
 
 	for cell in dash_path:
 		for p in hazards.pirates:

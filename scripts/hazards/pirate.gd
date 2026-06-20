@@ -2,6 +2,8 @@ class_name Pirate
 extends Node2D
 
 @onready var grid: TileMapLayer = get_parent()
+@onready var sfx_found := $"SFX_Found"
+
 var cell := Vector2i(1, 7)
 
 var is_chasing := false
@@ -33,6 +35,7 @@ func check_line_of_sight(player_cell: Vector2i) -> void:
 		check_cell += dir
 
 	is_chasing = true
+	sfx_found.play()
 
 
 func setup_astar() -> void:

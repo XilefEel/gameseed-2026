@@ -3,8 +3,11 @@ extends Node2D
 
 @onready var grid: Grid = get_parent()
 @onready var movement: PlayerMovement = $Movement
-
 @onready var move_label := $"../../UI/MovesLeft"
+
+@onready var sfx_move := $"SFX_Move"
+@onready var sfx_dash := $"SFX_Dash"
+@onready var sfx_die := $"SFX_Die"
 
 const MOVE_SPEED := 200.0
 var is_moving := false

@@ -72,8 +72,10 @@ func is_in_yellow_zone(cell: Vector2i) -> bool:
 
 
 func game_over() -> void:
-	await get_tree().create_timer(0.2).timeout
+	player.sfx_die.play()
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+	
 
 
 func win() -> void:
