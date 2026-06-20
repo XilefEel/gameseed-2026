@@ -53,6 +53,8 @@ func move(dir: Vector2i) -> void:
 
 	if not try_consume_move():
 		return
+
+	check_flammable()
 		
 	if player.moves_left <= 0:
 		await hazards.game_over()
@@ -181,6 +183,8 @@ func dash(dir: Vector2i) -> void:
 			await hazards.game_over()
 			return
 
+	check_flammable()
+
 	if player.moves_left <= 0:
 		await hazards.game_over()
 		return
@@ -265,3 +269,21 @@ func get_sucked_in() -> void:
 
 	player.is_moving = false
 	await hazards.game_over()
+
+
+func check_flammable() -> void:
+	if player.parcel_type != "flammable": return
+
+	if grid.is_hotspot(player.current_cell):
+		player.heat_gauge = min(player.heat_gauge + 1, 3)
+	else:
+		player.heat_gauge = max(player.heat_gauge - 1, 0)
+
+	if player.heat_gauge >= 3 and not player.is_burning:
+		player.is_burning = true
+
+	if player.is_burning:
+		player.burn_turns += 1
+		if player.burn_turns > 3:
+			await hazards.game_over()
+	

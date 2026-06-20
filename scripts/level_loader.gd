@@ -66,7 +66,6 @@ static func load_level(file_path: String, grid: Grid) -> void:
 		asteroid.path = path
 		grid.add_child(asteroid)
 
-
 	for i in range(0, data["portals"].size() - 1, 2):
 		var a = data["portals"][i]
 		var b = data["portals"][i + 1]
@@ -80,3 +79,7 @@ static func load_level(file_path: String, grid: Grid) -> void:
 		grid.add_portal_pair(a_cell, a_dir, b_cell, b_dir)
 		grid.set_cell(a_cell, 0, grid.PORTAL_IN, grid.get_portal_transform(a_dir))
 		grid.set_cell(b_cell, 0, grid.PORTAL_IN, grid.get_portal_transform(b_dir))
+
+	for h in data["hotspots"]:
+		var cell = Vector2i(h[0], h[1])
+		grid.set_cell(cell, 0, grid.HOTSPOT)

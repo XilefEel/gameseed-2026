@@ -50,5 +50,6 @@
   ],
   "blackholes": [[5, 5]],
   "pirates": [[2, 4]],
-  "portals": []
+  "portals": [],
+  "hotspots": []
 }

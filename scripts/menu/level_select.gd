@@ -9,6 +9,7 @@ const LEVELS = [
 	"res://levels/level_04.json",
 	"res://levels/level_05.json",
 	"res://levels/level_06.json",
+	"res://levels/level_07.json",
 ]
 
 

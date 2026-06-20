@@ -8,11 +8,10 @@ signal grid_ready
 const EMPTY := Vector2i(0, 0)
 const START := Vector2i(1, 0)
 const END := Vector2i(2, 0)
-const ASTEROID_PATH := Vector2i(1, 1)
 const DEBRIS := Vector2i(0, 2)
 const HOUSE := Vector2i(1, 2)
 const PORTAL_IN := Vector2i(0, 3)
-const PORTAL_OUT := Vector2i(1, 3)
+const HOTSPOT := Vector2i(1, 1)
 
 var start_cell := Vector2i(0, 0)
 var end_cell := Vector2i(7, 7)
@@ -82,6 +81,9 @@ func get_portal_transform(dir: Vector2i) -> int:
 	return 0
 
 
-func mark_asteroid_path(cells: Array[Vector2i]) -> void:
-	for cell in cells:
-		set_cell(cell, 0, ASTEROID_PATH)
+func is_hotspot(cell: Vector2i) -> bool:
+	return get_cell_atlas_coords(cell) == HOTSPOT
+
+# func mark_asteroid_path(cells: Array[Vector2i]) -> void:
+# 	for cell in cells:
+# 		set_cell(cell, 0, ASTEROID_PATH)

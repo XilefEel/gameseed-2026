@@ -6,6 +6,7 @@ extends Node2D
 @onready var move_label := $"../../UI/MovesLeft"
 @onready var package_type_label := $"../../UI/ParcelType"
 @onready var fragile_label := $"../../UI/FragileDashLeft"
+@onready var heat_label := $"../../UI/HeatGauge"
 
 @onready var sfx_move := $"SFX_Move"
 @onready var sfx_dash := $"SFX_Dash"
@@ -28,7 +29,15 @@ var parcel_type := "normal" :
 var fragile_dashes := 4 :
 	set(value):
 		fragile_dashes = value
-		fragile_label.text = "%d/4" % fragile_dashes
+		fragile_label.text = "DASHES: %d/4" % fragile_dashes
+
+var heat_gauge := 0 :
+	set(value):
+		heat_gauge = value
+		heat_label.text = "BURN: %d/3" % heat_gauge
+
+var is_burning := false
+var burn_turns := 0
 
 
 func _ready() -> void:
