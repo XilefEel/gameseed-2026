@@ -26,12 +26,6 @@ func _ready() -> void:
 	LevelLoader.load_level(LevelLoader.current_level, self)
 	draw_grid()
 	camera.setup_camera(size)
-	# add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
-	# add_portal_pair(Vector2i(7, 2), Vector2i.RIGHT, Vector2i(0, 7), Vector2i.UP)
-	
-	# for cell in portals.keys():
-	# 	set_cell(cell, 0, PORTAL_IN, get_portal_transform(portals[cell]["dir"]))
-
 	grid_ready.emit()
 
 
@@ -65,7 +59,7 @@ func is_house(cell: Vector2i) -> bool:
 
 func add_portal_pair(a: Vector2i, a_dir: Vector2i, b: Vector2i, b_dir: Vector2i) -> void:
 	portals[a] = {"exit": b, "dir": a_dir, "exit_dir": b_dir}
-	portals[b] = {"exit": a, "dir": -b_dir, "exit_dir": -a_dir}
+	portals[b] = {"exit": a, "dir": b_dir, "exit_dir": a_dir}
 
 
 func is_portal(cell: Vector2i) -> bool:

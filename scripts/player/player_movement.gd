@@ -77,7 +77,7 @@ func move_to_cell(new_cell: Vector2i) -> void:
 
 func move_through_portal() -> void:
 	var portal = grid.get_portal(player.current_cell)
-	var landing = portal["exit"] + portal["exit_dir"]
+	var landing = portal["exit"] - portal["exit_dir"]
 
 	if not grid.is_in_bounds(landing) or grid.is_debris(landing) or grid.is_house(landing):
 		return

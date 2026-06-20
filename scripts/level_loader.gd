@@ -7,6 +7,14 @@ const BLACKHOLE_SCENE = preload("res://scenes/Blackhole.tscn")
 const ASTEROID_SCENE = preload("res://scenes/Asteroid.tscn")
 
 
+const DIR_MAP = {
+	"up": Vector2i.UP,
+	"down": Vector2i.DOWN,
+	"left": Vector2i.LEFT,
+	"right": Vector2i.RIGHT
+}
+		
+
 static func load_level(file_path: String, grid: Grid) -> void:
 	var file = FileAccess.open(file_path, FileAccess.READ)
 
@@ -56,3 +64,18 @@ static func load_level(file_path: String, grid: Grid) -> void:
 
 		asteroid.path = path
 		grid.add_child(asteroid)
+
+
+	for i in range(0, data["portals"].size() - 1, 2):
+		var a = data["portals"][i]
+		var b = data["portals"][i + 1]
+		
+		var a_cell = Vector2i(a["cell"]["x"], a["cell"]["y"])
+		var b_cell = Vector2i(b["cell"]["x"], b["cell"]["y"])
+		
+		var a_dir = DIR_MAP[a["dir"]]
+		var b_dir = DIR_MAP[b["dir"]]
+		
+		grid.add_portal_pair(a_cell, a_dir, b_cell, b_dir)
+		grid.set_cell(a_cell, 0, grid.PORTAL_IN, grid.get_portal_transform(a_dir))
+		grid.set_cell(b_cell, 0, grid.PORTAL_IN, grid.get_portal_transform(b_dir))
