@@ -23,5 +23,5 @@ func _ready() -> void:
 		var level_path = LEVELS[i]
 		button.pressed.connect(func() -> void:
 			LevelLoader.current_level = level_path
-			get_tree().change_scene_to_file("res://scenes/Game.tscn")
+			get_tree().change_scene_to_file("res://scenes/levels/Game.tscn")
 		)
