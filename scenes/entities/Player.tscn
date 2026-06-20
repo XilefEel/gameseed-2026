@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bna7et0tvojy2"]
 
-[ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/player/player.gd" id="1_mdl7e"]
-[ext_resource type="Texture2D" uid="uid://wyx8olo8tifw" path="res://assets/sprites/ojol.png" id="2_qu4a1"]
-[ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/player_hazards.gd" id="3_70d11"]
-[ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/player_movement.gd" id="4_cw2d6"]
-[ext_resource type="AudioStream" uid="uid://dh7aohrum02p4" path="res://assets/sfx/Dash.ogg" id="5_70d11"]
-[ext_resource type="AudioStream" uid="uid://3md15ej7127s" path="res://assets/sfx/FAH.mp3" id="5_qu4a1"]
+[ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/entities/player.gd" id="1_mdl7e"]
+[ext_resource type="Texture2D" uid="uid://wyx8olo8tifw" path="res://assets/sprites/player.png" id="2_qu4a1"]
+[ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/hazard_detector.gd" id="3_70d11"]
+[ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/movement_controller.gd" id="4_cw2d6"]
+[ext_resource type="AudioStream" uid="uid://dh7aohrum02p4" path="res://assets/sfx/dash.ogg" id="5_70d11"]
+[ext_resource type="AudioStream" uid="uid://3md15ej7127s" path="res://assets/sfx/death.mp3" id="5_qu4a1"]
 
 [node name="Player" type="Node2D" unique_id=1178408647]
 script = ExtResource("1_mdl7e")

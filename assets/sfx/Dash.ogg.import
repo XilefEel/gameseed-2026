@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dh7aohrum02p4"
-path="res://.godot/imported/Dash.ogg-a8fa0471af8a76c3d9fbcdf5b059e823.oggvorbisstr"
+path="res://.godot/imported/dash.ogg-8bcec0ee8611335018d0dbc7ca5ba4c1.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/sfx/Dash.ogg"
-dest_files=["res://.godot/imported/Dash.ogg-a8fa0471af8a76c3d9fbcdf5b059e823.oggvorbisstr"]
+source_file="res://assets/sfx/dash.ogg"
+dest_files=["res://.godot/imported/dash.ogg-8bcec0ee8611335018d0dbc7ca5ba4c1.oggvorbisstr"]
 
 [params]
 

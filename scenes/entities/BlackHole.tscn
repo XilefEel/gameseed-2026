@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvd4mc3kgtki8"]
 
-[ext_resource type="Script" uid="uid://dm8m5g38ga4jw" path="res://scripts/hazards/blackhole.gd" id="1_itpj1"]
-[ext_resource type="Texture2D" uid="uid://dg1esfdmpoen8" path="res://assets/sprites/Ton618.png" id="2_l5k6b"]
+[ext_resource type="Script" uid="uid://dm8m5g38ga4jw" path="res://scripts/entities/blackhole.gd" id="1_itpj1"]
+[ext_resource type="Texture2D" uid="uid://dg1esfdmpoen8" path="res://assets/sprites/blackhole.png" id="2_l5k6b"]
 
 [node name="Blackhole" type="Node2D" unique_id=1032715542]
 script = ExtResource("1_itpj1")

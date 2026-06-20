@@ -10,7 +10,6 @@ var path_index := 0
 func _ready() -> void:
 	add_to_group("asteroids")
 	position = grid.map_to_local(path[0])
-	# grid.mark_asteroid_path(path)
 
 
 func step() -> void:

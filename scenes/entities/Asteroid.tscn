@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qmks1gqmjvhj"]
 
-[ext_resource type="Script" uid="uid://cah2dtdv5libh" path="res://scripts/hazards/asteroid.gd" id="1_3suc8"]
-[ext_resource type="Texture2D" uid="uid://b7oqufhjxe2im" path="res://assets/sprites/rock.png" id="2_1ve3k"]
+[ext_resource type="Script" uid="uid://cah2dtdv5libh" path="res://scripts/entities/asteroid.gd" id="1_3suc8"]
+[ext_resource type="Texture2D" uid="uid://b7oqufhjxe2im" path="res://assets/sprites/asteroid.png" id="2_1ve3k"]
 
 [node name="Asteroid" type="Node2D" unique_id=1497965314]
 script = ExtResource("1_3suc8")

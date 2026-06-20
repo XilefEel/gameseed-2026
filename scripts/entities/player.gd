@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var grid: Grid = get_parent()
 @onready var movement: PlayerMovement = $Movement
+
 @onready var move_label := $"../../UI/MovesLeft"
 @onready var parcel_type_label := $"../../UI/ParcelType"
 @onready var parcel_status_label := $"../../UI/ParcelStatus"
@@ -46,6 +47,7 @@ var burn_turns := 0 :
 		burn_turns = value
 		update_parcel_ui()
 
+
 func _ready() -> void:
 	await grid.grid_ready
 
@@ -75,6 +77,7 @@ func _unhandled_input(event) -> void:
 		else:
 			movement.move(dir)
 
+
 func update_parcel_ui() -> void:
 	match parcel_type:
 		"normal":
@@ -88,6 +91,6 @@ func update_parcel_ui() -> void:
 				parcel_status_label.text = "BURNING! %d turns left" % (4 - burn_turns)
 			else:
 				parcel_status_label.text = "HEAT: %d/3" % heat_gauge
-				
+
 		_:
 			parcel_status_label.text = ""
