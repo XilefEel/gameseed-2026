@@ -28,6 +28,7 @@ static func load_level(file_path: String, grid: Grid) -> void:
 
 	var player = grid.get_node("Player")
 	player.moves_left = data["moves"]
+	player.parcel_type = data["parcel_type"]
 
 	grid.size = data["grid_size"]
 	grid.start_cell = Vector2i(data["start_cell"][0], data["start_cell"][1])

@@ -2,6 +2,7 @@
   "name": "level_01",
   "grid_size": 9,
   "moves": 15,
+  "parcel_type": "fragile",
   "start_cell": [0, 0],
   "end_cell": [8, 0],
   "debris": [

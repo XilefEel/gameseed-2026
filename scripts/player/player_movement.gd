@@ -123,13 +123,15 @@ func dash(dir: Vector2i) -> void:
 	var used_portal = dash_info["used_portal"]
 	player.sfx_dash.play()
 
+	var stop_cell = dash_path[-1]
+
 	for cell in dash_path:
 		for p in hazards.pirates:
 			p.check_line_of_sight(cell)
 
 		if not grid.is_in_bounds(cell):
-			await move_to_cell(dash_path[dash_path.find(cell) - 1])
-			return
+			stop_cell = dash_path[dash_path.find(cell) - 1]
+			break
 		
 		if grid.is_debris(cell) or grid.is_house(cell) or hazards.is_on_blackhole(cell):
 			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
@@ -142,10 +144,10 @@ func dash(dir: Vector2i) -> void:
 			return
 
 	if used_portal:
-		player.current_cell = dash_path[-1]
-		player.position = grid.map_to_local(dash_path[-1])
+		player.current_cell = stop_cell
+		player.position = grid.map_to_local(stop_cell)
 	else:
-		await move_to_cell(dash_path[-1])
+		await move_to_cell(stop_cell)
 
 	var behind = start_cell - dir
 	
@@ -172,6 +174,12 @@ func dash(dir: Vector2i) -> void:
 
 	if not try_consume_move():
 		return
+
+	if player.parcel_type == "fragile":
+		player.fragile_dashes -= 1
+		if player.fragile_dashes <= 0:
+			await hazards.game_over()
+			return
 
 	if player.moves_left <= 0:
 		await hazards.game_over()

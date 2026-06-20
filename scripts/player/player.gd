@@ -4,6 +4,8 @@ extends Node2D
 @onready var grid: Grid = get_parent()
 @onready var movement: PlayerMovement = $Movement
 @onready var move_label := $"../../UI/MovesLeft"
+@onready var package_type_label := $"../../UI/ParcelType"
+@onready var fragile_label := $"../../UI/FragileDashLeft"
 
 @onready var sfx_move := $"SFX_Move"
 @onready var sfx_dash := $"SFX_Dash"
@@ -18,12 +20,23 @@ var moves_left := 120 :
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
 
+var parcel_type := "normal" :
+	set(value):
+		parcel_type = value
+		package_type_label.text = "PARCEL TYPE: %s" % value
+
+var fragile_dashes := 4 :
+	set(value):
+		fragile_dashes = value
+		fragile_label.text = "%d/4" % fragile_dashes
+
 
 func _ready() -> void:
 	await grid.grid_ready
 
 	current_cell = grid.start_cell
 	position = grid.map_to_local(grid.start_cell)
+	parcel_type = parcel_type
 
 
 func _unhandled_input(event) -> void:
