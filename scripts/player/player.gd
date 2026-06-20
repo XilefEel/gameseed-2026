@@ -4,9 +4,8 @@ extends Node2D
 @onready var grid: Grid = get_parent()
 @onready var movement: PlayerMovement = $Movement
 @onready var move_label := $"../../UI/MovesLeft"
-@onready var package_type_label := $"../../UI/ParcelType"
-@onready var fragile_label := $"../../UI/FragileDashLeft"
-@onready var heat_label := $"../../UI/HeatGauge"
+@onready var parcel_type_label := $"../../UI/ParcelType"
+@onready var parcel_status_label := $"../../UI/ParcelStatus"
 
 @onready var sfx_move := $"SFX_Move"
 @onready var sfx_dash := $"SFX_Dash"
@@ -21,24 +20,31 @@ var moves_left := 120 :
 		moves_left = value
 		move_label.text = "MOVES LEFT: %d" % moves_left
 
-var parcel_type := "normal" :
+var parcel_type := "none" :
 	set(value):
 		parcel_type = value
-		package_type_label.text = "PARCEL TYPE: %s" % value
+		parcel_type_label.text = "PARCEL TYPE: %s" % value
+		update_parcel_ui()
 
 var fragile_dashes := 4 :
 	set(value):
 		fragile_dashes = value
-		fragile_label.text = "DASHES: %d/4" % fragile_dashes
+		update_parcel_ui()
 
 var heat_gauge := 0 :
 	set(value):
 		heat_gauge = value
-		heat_label.text = "BURN: %d/3" % heat_gauge
+		update_parcel_ui()
 
-var is_burning := false
-var burn_turns := 0
+var is_burning := false :
+	set(value):
+		is_burning = value
+		update_parcel_ui()
 
+var burn_turns := 0 :
+	set(value):
+		burn_turns = value
+		update_parcel_ui()
 
 func _ready() -> void:
 	await grid.grid_ready
@@ -68,3 +74,20 @@ func _unhandled_input(event) -> void:
 			movement.dash(dir)
 		else:
 			movement.move(dir)
+
+func update_parcel_ui() -> void:
+	match parcel_type:
+		"normal":
+			parcel_status_label.text = ""
+
+		"fragile":
+			parcel_status_label.text = "FRAGILE: %d dashes left" % fragile_dashes
+
+		"flammable":
+			if is_burning:
+				parcel_status_label.text = "BURNING! %d turns left" % (4 - burn_turns)
+			else:
+				parcel_status_label.text = "HEAT: %d/3" % heat_gauge
+				
+		_:
+			parcel_status_label.text = ""
