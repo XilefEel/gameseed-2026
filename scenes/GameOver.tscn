@@ -23,4 +23,9 @@ text = "Game Over!"
 layout_mode = 2
 text = "Try Again?"
 
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=404767566]
+layout_mode = 2
+text = "Back"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_pressed_2"]

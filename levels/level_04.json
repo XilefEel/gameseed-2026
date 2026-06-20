@@ -1,0 +1,19 @@
+{
+  "name": "level_01",
+  "grid_size": 7,
+  "moves": 15,
+  "start_cell": [0, 6],
+  "end_cell": [6, 0],
+  "debris": [],
+  "houses": [],
+  "asteroids": [],
+  "blackholes": [
+    [3, 0],
+    [0, 3],
+    [3, 3],
+    [6, 3],
+    [3, 6]
+  ],
+  "pirates": [],
+  "portals": []
+}

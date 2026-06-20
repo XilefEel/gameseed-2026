@@ -1,5 +1,7 @@
 class_name LevelLoader
 
+static var current_level := "res://levels/level_01.json"
+
 const PIRATE_SCENE = preload("res://scenes/Pirate.tscn")
 const BLACKHOLE_SCENE = preload("res://scenes/Blackhole.tscn")
 const ASTEROID_SCENE = preload("res://scenes/Asteroid.tscn")

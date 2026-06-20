@@ -23,7 +23,7 @@ var portals := {}
 
 func _ready() -> void:
 	clear()
-	LevelLoader.load_level("res://levels/level_01.json", self)
+	LevelLoader.load_level(LevelLoader.current_level, self)
 	draw_grid()
 	camera.setup_camera(size)
 	# add_portal_pair(Vector2i(1, 1), Vector2i.RIGHT, Vector2i(6, 5), Vector2i.UP)
