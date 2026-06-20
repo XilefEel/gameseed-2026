@@ -1,7 +1,7 @@
 class_name PlayerHazards
 extends Node
 
-var player: Node2D
+var player: Player
 
 var asteroids: Array:
 	get:
@@ -73,7 +73,8 @@ func is_in_yellow_zone(cell: Vector2i) -> bool:
 
 func game_over() -> void:
 	player.sfx_die.play()
-	await get_tree().create_timer(2).timeout
+	player.is_moving = true
+	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
 	
 

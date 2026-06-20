@@ -18,10 +18,9 @@ func move(dir: Vector2i) -> void:
 		return
 
 	var next = player.current_cell + dir
-	var wrong_portal_side = grid.is_portal(next) and grid.get_portal(next)["dir"] != dir
 	player.sfx_move.play()
 
-	if not grid.is_in_bounds(next) or grid.is_debris(next) or grid.is_house(next) or wrong_portal_side:
+	if not grid.is_in_bounds(next) or grid.is_debris(next) or grid.is_house(next):
 		return
 
 	if hazards.is_on_blackhole(next):
@@ -102,6 +101,10 @@ func dash(dir: Vector2i) -> void:
 	if player.moves_left <= 0:
 		return
 
+	var next = player.current_cell + dir
+	if not grid.is_in_bounds(next):
+		return
+
 	var start_cell = player.current_cell
 	var dash_path := []
 	var dash_length = 2 if hazards.is_in_red_zone(player.current_cell) else 3
@@ -123,6 +126,7 @@ func dash(dir: Vector2i) -> void:
 	var dash_info = build_dash_path(dir, dash_length, curve)
 	dash_path = dash_info["path"]
 	var used_portal = dash_info["used_portal"]
+	
 	player.sfx_dash.play()
 
 	var stop_cell = dash_path[-1]
@@ -220,11 +224,11 @@ func build_dash_path(dir: Vector2i, dash_length: int, curve: Vector2i) -> Dictio
 
 		if grid.is_portal(next_cell) and grid.get_portal(next_cell)["dir"] == current_dir:
 			var portal = grid.get_portal(next_cell)
-			var landing = portal["exit"] + portal["exit_dir"]
+			var landing = portal["exit"] - portal["exit_dir"]
 
 			path.append(landing)
 			current_pos = landing
-			current_dir = portal["exit_dir"]
+			current_dir = -portal["exit_dir"]
 
 			used_portal = true
 		else:
