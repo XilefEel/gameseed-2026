@@ -1,32 +1,15 @@
-[gd_scene format=4 uid="uid://wsp11q4m00jx"]
+[gd_scene format=3 uid="uid://wsp11q4m00jx"]
 
 [ext_resource type="Script" uid="uid://0wqb1rjxbtrg" path="res://scripts/game.gd" id="1_s0nni"]
-[ext_resource type="Texture2D" uid="uid://bhbpvkci3r5c2" path="res://assets/tileset/tileset-asset.png" id="2_aug50"]
-[ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/ui/level_grid.gd" id="3_kiw3p"]
-[ext_resource type="PackedScene" uid="uid://bna7et0tvojy2" path="res://scenes/entities/Player.tscn" id="4_s0nni"]
+[ext_resource type="PackedScene" uid="uid://bbqmqxbcjdkpc" path="res://scenes/ui/Background.tscn" id="2_hmsq1"]
+[ext_resource type="PackedScene" uid="uid://6cp3cov00ao7" path="res://scenes/levels/Grid.tscn" id="5_hqrlp"]
 [ext_resource type="PackedScene" uid="uid://bvheo118c67au" path="res://scenes/levels/LevelUI.tscn" id="6_hqrlp"]
 [ext_resource type="Script" uid="uid://pv7kbvkt0f0u" path="res://scripts/core/camera.gd" id="8_400sg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
-texture = ExtResource("2_aug50")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_7ua8r"]
-sources/0 = SubResource("TileSetAtlasSource_2rd6h")
-
 [node name="Game" type="Node2D" unique_id=440468670]
 script = ExtResource("1_s0nni")
+
+[node name="Background" parent="." unique_id=1744534265 instance=ExtResource("2_hmsq1")]
 
 [node name="UI" parent="." unique_id=792363502 instance=ExtResource("6_hqrlp")]
 
@@ -35,9 +18,4 @@ position = Vector2(80, 80)
 zoom = Vector2(4, 4)
 script = ExtResource("8_400sg")
 
-[node name="Grid" type="TileMapLayer" parent="." unique_id=1148009602]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAAAAEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_7ua8r")
-script = ExtResource("3_kiw3p")
-
-[node name="Player" parent="Grid" unique_id=1178408647 instance=ExtResource("4_s0nni")]
+[node name="Grid" parent="." unique_id=1115352261 instance=ExtResource("5_hqrlp")]

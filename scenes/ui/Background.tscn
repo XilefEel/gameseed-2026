@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbqmqxbcjdkpc"]
+
+[ext_resource type="Texture2D" uid="uid://ciemnvr5nkvsk" path="res://assets/ui/bg.png" id="1_kx87i"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1744534265]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1379337383]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kx87i")
