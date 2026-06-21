@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/movement_controller.gd" id="4_cw2d6"]
 [ext_resource type="AudioStream" uid="uid://dh7aohrum02p4" path="res://assets/sfx/dash.ogg" id="5_70d11"]
 [ext_resource type="AudioStream" uid="uid://3md15ej7127s" path="res://assets/sfx/death.mp3" id="5_qu4a1"]
+[ext_resource type="Script" uid="uid://djwuiu5imqvd0" path="res://scripts/player/parcel.gd" id="7_lfoco"]
 
 [node name="Player" type="Node2D" unique_id=1178408647]
 script = ExtResource("1_mdl7e")
@@ -28,3 +29,6 @@ stream = ExtResource("5_70d11")
 
 [node name="SFX_Die" type="AudioStreamPlayer2D" parent="." unique_id=455254004]
 stream = ExtResource("5_qu4a1")
+
+[node name="Parcel" type="Node" parent="." unique_id=1429067528]
+script = ExtResource("7_lfoco")

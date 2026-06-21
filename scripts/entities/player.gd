@@ -2,7 +2,7 @@ class_name Player
 extends Node2D
 
 @onready var grid: Grid = get_parent()
-@onready var movement: PlayerMovement = $Movement
+@onready var movement: MovementController = $Movement
 
 @onready var move_label := $"../../UI/MovesLeft"
 @onready var parcel_type_label := $"../../UI/ParcelType"

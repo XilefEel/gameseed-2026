@@ -1,4 +1,4 @@
-class_name PlayerHazards
+class_name HazardDetector
 extends Node
 
 var player: Player
