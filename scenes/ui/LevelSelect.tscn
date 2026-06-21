@@ -8,7 +8,7 @@ script = ExtResource("1_dbyaq")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=166093210]
 offset_right = 1166.0
 offset_bottom = 655.0
-color = Color(0.08627451, 0.08627451, 0.1764706, 1)
+color = Color(0.07058824, 0.039215688, 0.19607843, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=37132129]
 offset_right = 1163.0

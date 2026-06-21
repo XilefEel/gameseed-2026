@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bvheo118c67au"]
+
+[ext_resource type="Script" uid="uid://dtwgqefw6nq4t" path="res://scripts/ui/hud.gd" id="1_3e1t0"]
+
+[node name="LevelUI" type="CanvasLayer" unique_id=792363502]
+
+[node name="HUD" type="Control" parent="." unique_id=1498231376]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3e1t0")
+
+[node name="LeftPanel" type="Control" parent="HUD" unique_id=1183887210]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 263.0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/LeftPanel" unique_id=1815106130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.039215688, 0.19607843, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/LeftPanel" unique_id=1105211616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer" unique_id=231036993]
+layout_mode = 2
+
+[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1530078988]
+layout_mode = 2
+text = "MOVES LEFT:"
+
+[node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1592924229]
+layout_mode = 2
+
+[node name="ParcelType" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=420153094]
+layout_mode = 2
+text = "PARCEL: NORMAL"
+
+[node name="RightPanel" type="Control" parent="HUD" unique_id=1321337113]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/RightPanel" unique_id=928215979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.039215688, 0.19607843, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/RightPanel" unique_id=1277691713]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/RightPanel/MarginContainer" unique_id=1927509783]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/RightPanel/MarginContainer/VBoxContainer" unique_id=690741427]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Back" type="Button" parent="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=241381029]
+layout_mode = 2
+text = "Back"
+
+[node name="Retry" type="Button" parent="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=794411888]
+layout_mode = 2
+text = "Retry"
+
+[connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="HUD" method="_on_back_pressed"]
+[connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Retry" to="HUD" method="_on_retry_pressed"]

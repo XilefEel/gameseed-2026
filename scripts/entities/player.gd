@@ -4,9 +4,9 @@ extends Node2D
 @onready var grid: Grid = get_parent()
 @onready var movement: MovementController = $Movement
 
-@onready var move_label := $"../../UI/MovesLeft"
-@onready var parcel_type_label := $"../../UI/ParcelType"
-@onready var parcel_status_label := $"../../UI/ParcelStatus"
+@onready var move_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/MovesLeft" 
+@onready var parcel_type_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelType"
+@onready var parcel_status_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelStatus"
 
 @onready var sfx_move := $"SFX_Move"
 @onready var sfx_dash := $"SFX_Dash"
