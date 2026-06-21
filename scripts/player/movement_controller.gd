@@ -1,10 +1,11 @@
 class_name PlayerMovement
 extends Node
 
-var player: Player
+@onready var game: Game =  get_parent().get_parent().get_parent()
+@onready var player: Player = get_parent()
+
 var grid: Grid
 var hazards: PlayerHazards
-
 
 func _ready() -> void:
 	player = get_parent()
@@ -24,12 +25,11 @@ func move(dir: Vector2i) -> void:
 		return
 
 	if hazards.is_on_blackhole(next):
-		await hazards.game_over()
+		await game.game_over()
 		return
 
-	if not hazards.is_asteroid_at(next) and not hazards.is_pirate_at(next):
+	if not hazards.is_asteroid_at(next):
 		player.current_cell = next
-
 
 	if grid.is_portal(next) and grid.get_portal(next)["dir"] == dir:
 		move_through_portal()
@@ -38,16 +38,16 @@ func move(dir: Vector2i) -> void:
 
 	hazards.step_pirates(player.current_cell)
 	if hazards.is_pirate_at(player.current_cell):
-		await hazards.game_over()
+		await game.game_over()
 		return
 
 	hazards.step_asteroids()
 	if hazards.is_asteroid_at(player.current_cell):
-		await hazards.game_over()
+		await game.game_over()
 		return
 
 	if grid.is_end_cell(player.current_cell):
-		await hazards.win()
+		await game.win()
 		return
 
 	if not try_consume_move():
@@ -56,7 +56,7 @@ func move(dir: Vector2i) -> void:
 	check_flammable()
 		
 	if player.moves_left <= 0:
-		await hazards.game_over()
+		await game.game_over()
 		return
 
 
@@ -95,7 +95,7 @@ func try_consume_move() -> bool:
 
 	player.moves_left -= cost
 	return true
-	
+
 
 func dash(dir: Vector2i) -> void:
 	if player.moves_left <= 0:
@@ -141,12 +141,12 @@ func dash(dir: Vector2i) -> void:
 		
 		if grid.is_debris(cell) or grid.is_house(cell) or hazards.is_on_blackhole(cell):
 			await move_to_cell(cell if grid.is_in_bounds(cell) else dash_path[-2])
-			await hazards.game_over()
+			await game.game_over()
 			return
 
 		if hazards.is_asteroid_at(cell) or hazards.is_pirate_at(cell):
 			await move_to_cell(cell)
-			await hazards.game_over()
+			await game.game_over()
 			return
 
 	if used_portal:
@@ -160,22 +160,28 @@ func dash(dir: Vector2i) -> void:
 	if grid.is_in_bounds(behind):
 		if grid.is_debris(behind):
 			grid.set_cell(behind, 0, grid.EMPTY)
-			
+
 		elif grid.is_house(behind):
 			grid.set_cell(behind, 0, grid.EMPTY)
-			await hazards.game_over()
+			await game.game_over()
 			return
+		
+		elif hazards.is_asteroid_at(behind):
+			hazards.destroy_asteroid_at(behind)
+		
+		elif hazards.is_pirate_at(behind):
+			hazards.remove_pirate_at(behind)
 
 	hazards.step_pirates(player.current_cell)
 
 	if hazards.is_pirate_at(player.current_cell):
-		await hazards.game_over()
+		await game.game_over()
 		return
 
 	hazards.step_asteroids()
 
 	if grid.is_end_cell(player.current_cell):
-		await hazards.win()
+		await game.win()
 		return
 
 	if not try_consume_move():
@@ -184,13 +190,13 @@ func dash(dir: Vector2i) -> void:
 	if player.parcel_type == "fragile":
 		player.fragile_dashes -= 1
 		if player.fragile_dashes <= 0:
-			await hazards.game_over()
+			await game.game_over()
 			return
 
 	check_flammable()
 
 	if player.moves_left <= 0:
-		await hazards.game_over()
+		await game.game_over()
 		return
 
 
@@ -272,7 +278,7 @@ func get_sucked_in() -> void:
 			break
 
 	player.is_moving = false
-	await hazards.game_over()
+	await game.game_over()
 
 
 func check_flammable() -> void:
@@ -289,5 +295,4 @@ func check_flammable() -> void:
 	if player.is_burning:
 		player.burn_turns += 1
 		if player.burn_turns > 3:
-			await hazards.game_over()
-	
+			await game.game_over()
