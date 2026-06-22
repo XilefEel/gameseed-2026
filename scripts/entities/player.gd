@@ -52,9 +52,6 @@ func _ready() -> void:
 
 	current_cell = grid.start_cell
 	position = grid.map_to_local(grid.start_cell)
-	moves_left = moves_left
-	parcel_type = parcel_type
-	update_parcel_ui()
 
 
 func _unhandled_input(event) -> void:
