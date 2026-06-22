@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4kf2yol6ba8k"]
 
 [ext_resource type="Script" uid="uid://bl34kxyjk67p7" path="res://scripts/ui/level_select.gd" id="1_dbyaq"]
+[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_wp86k"]
 
 [node name="LevelSelect" type="Node2D" unique_id=1905418079]
 script = ExtResource("1_dbyaq")
@@ -19,6 +20,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1672342759]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wp86k")
+theme_override_font_sizes/font_size = 40
 text = "Select Level"
 horizontal_alignment = 1
 

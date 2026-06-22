@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://defhay0gqd14u"]
 
 [ext_resource type="Script" uid="uid://byeccmpsady8k" path="res://scripts/ui/game_over_screen.gd" id="1_6bcno"]
+[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_57v1k"]
 
 [node name="GameOver" type="Control" unique_id=1175204752]
 layout_mode = 3
@@ -17,14 +18,22 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=197215434]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_57v1k")
+theme_override_font_sizes/font_size = 40
 text = "Game Over!"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=885748581]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_57v1k")
+theme_override_font_sizes/font_size = 20
 text = "Try Again?"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=404767566]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_57v1k")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

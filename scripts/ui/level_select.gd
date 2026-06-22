@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var level_container = $CenterContainer/VBoxContainer/LevelContainer
+@onready var font = preload("res://assets/fonts/font.ttf")
+
 
 const LEVELS = [
 	"res://levels/level_01.json",
@@ -18,6 +20,8 @@ func _ready() -> void:
 		var button = Button.new()
 		button.text = "Level " + str(i + 1)
 		button.position = Vector2(100, 100 + i * 50)
+		button.add_theme_font_override("font", font)
+		button.add_theme_font_size_override("font_size", 20)
 		level_container.add_child(button)
 
 		var level_path = LEVELS[i]

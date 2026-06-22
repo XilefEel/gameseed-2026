@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://df3frb33tk4vk"]
 
 [ext_resource type="Script" uid="uid://ca85gigvlsfp0" path="res://scripts/ui/win_screen.gd" id="1_pnk8a"]
+[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_k3dxi"]
 
 [node name="Win" type="Control" unique_id=1313962871]
 layout_mode = 3
@@ -17,14 +18,22 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1270261079]
 layout_mode = 2
-text = "WIN!"
+theme_override_fonts/font = ExtResource("2_k3dxi")
+theme_override_font_sizes/font_size = 40
+text = "PARCEL DELIVERED!"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=650933478]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_k3dxi")
+theme_override_font_sizes/font_size = 20
 text = "Play Again?"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1570487407]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_k3dxi")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
