@@ -25,6 +25,7 @@ func _ready() -> void:
 	LevelLoader.load_level(LevelLoader.current_level, self)
 	draw_grid()
 	camera.setup_camera(size)
+	
 	grid_ready.emit()
 
 

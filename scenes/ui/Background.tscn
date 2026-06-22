@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbqmqxbcjdkpc"]
 
-[ext_resource type="Texture2D" uid="uid://ciemnvr5nkvsk" path="res://assets/ui/bg.png" id="1_kx87i"]
+[ext_resource type="Texture2D" uid="uid://dhjbwv2nlpywn" path="res://assets/ui/bg.png" id="1_kx87i"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1744534265]
 layer = -1
@@ -12,3 +12,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_kx87i")
+expand_mode = 1

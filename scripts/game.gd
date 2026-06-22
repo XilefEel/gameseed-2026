@@ -1,8 +1,12 @@
 class_name Game
 extends Node2D
 
-@onready var grid: Grid = $Grid
 @onready var player: Player = $Grid/Player
+@onready var hud: Control = $"UI/HUD"
+
+func _ready() -> void:
+	hud.setup(player)
+
 
 func game_over() -> void:
 	player.sfx_die.play()

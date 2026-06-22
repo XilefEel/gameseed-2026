@@ -1,12 +1,12 @@
 class_name Player
 extends Node2D
 
+signal moves_changed(moves_left: int)
+signal parcel_type_changed(parcel_type: String)
+signal parcel_status_changed(parcel_status: String)
+
 @onready var grid: Grid = get_parent()
 @onready var movement: MovementController = $Movement
-
-@onready var move_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/MovesLeft" 
-@onready var parcel_type_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelType"
-@onready var parcel_status_label := $"../../UI/HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelStatus"
 
 @onready var sfx_move := $"SFX_Move"
 @onready var sfx_dash := $"SFX_Dash"
@@ -16,15 +16,14 @@ const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
 
-var moves_left := 120 :
+var moves_left := 15 :
 	set(value):
 		moves_left = value
-		move_label.text = "MOVES LEFT: %d" % moves_left
+		moves_changed.emit(value)
 
 var parcel_type := "none" :
 	set(value):
 		parcel_type = value
-		parcel_type_label.text = "PARCEL TYPE: %s" % value
 		update_parcel_ui()
 
 var fragile_dashes := 4 :
@@ -53,7 +52,9 @@ func _ready() -> void:
 
 	current_cell = grid.start_cell
 	position = grid.map_to_local(grid.start_cell)
+	moves_left = moves_left
 	parcel_type = parcel_type
+	update_parcel_ui()
 
 
 func _unhandled_input(event) -> void:
@@ -81,16 +82,19 @@ func _unhandled_input(event) -> void:
 func update_parcel_ui() -> void:
 	match parcel_type:
 		"normal":
-			parcel_status_label.text = ""
+			parcel_type_changed.emit("PARCEL: NORMAL")
+			parcel_status_changed.emit("")
 
 		"fragile":
-			parcel_status_label.text = "FRAGILE: %d dashes left" % fragile_dashes
+			parcel_type_changed.emit("PARCEL: FRAGILE")
+			parcel_status_changed.emit("%d dashes left" % fragile_dashes)
 
 		"flammable":
+			parcel_type_changed.emit("PARCEL: FLAMMABLE")
 			if is_burning:
-				parcel_status_label.text = "BURNING! %d turns left" % (4 - burn_turns)
+				parcel_status_changed.emit("BURNING! %d turns left" % (4 - burn_turns))
 			else:
-				parcel_status_label.text = "HEAT: %d/3" % heat_gauge
+				parcel_status_changed.emit("HEAT: %d/3" % heat_gauge)
 
 		_:
-			parcel_status_label.text = ""
+			parcel_status_changed.emit("")

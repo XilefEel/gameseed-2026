@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bvheo118c67au"]
 
 [ext_resource type="Script" uid="uid://dtwgqefw6nq4t" path="res://scripts/ui/hud.gd" id="1_3e1t0"]
+[ext_resource type="Texture2D" uid="uid://jkg7hg00ajrh" path="res://assets/sprites/normal.png" id="2_ndsgl"]
+[ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/cahyo.png" id="3_2yath"]
 
 [node name="LevelUI" type="CanvasLayer" unique_id=792363502]
 
@@ -44,16 +46,32 @@ theme_override_constants/margin_bottom = 24
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer" unique_id=231036993]
 layout_mode = 2
 
-[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1530078988]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=416495655]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1530078988]
+unique_name_in_owner = true
 layout_mode = 2
 text = "MOVES LEFT:"
 
-[node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1592924229]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1636362023]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ParcelType" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=420153094]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PARCEL:"
+
+[node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1592924229]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ParcelType" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=420153094]
+[node name="TextureRect" type="TextureRect" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=705411438]
 layout_mode = 2
-text = "PARCEL: NORMAL"
+texture = ExtResource("2_ndsgl")
+expand_mode = 4
 
 [node name="RightPanel" type="Control" parent="HUD" unique_id=1321337113]
 layout_mode = 1
@@ -92,6 +110,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/RightPanel/MarginContainer/VBoxContainer" unique_id=690741427]
 layout_mode = 2
 theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Back" type="Button" parent="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=241381029]
 layout_mode = 2
@@ -100,6 +119,15 @@ text = "Back"
 [node name="Retry" type="Button" parent="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=794411888]
 layout_mode = 2
 text = "Retry"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/RightPanel/MarginContainer/VBoxContainer" unique_id=1508822734]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="TextureRect" type="TextureRect" parent="HUD/RightPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=631436980]
+layout_mode = 2
+texture = ExtResource("3_2yath")
+expand_mode = 4
 
 [connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="HUD" method="_on_back_pressed"]
 [connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Retry" to="HUD" method="_on_retry_pressed"]
