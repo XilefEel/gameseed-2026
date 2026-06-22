@@ -4,6 +4,7 @@ extends Node2D
 signal moves_changed(moves_left: int)
 signal parcel_type_changed(parcel_type: String)
 signal parcel_status_changed(parcel_status: String)
+signal is_alive_changed(is_alive: bool)
 
 @onready var grid: Grid = get_parent()
 @onready var movement: MovementController = $Movement
@@ -16,6 +17,11 @@ const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
 
+var is_alive := true :
+	set(value):
+		is_alive = value
+		is_alive_changed.emit(value)
+
 var moves_left := 15 :
 	set(value):
 		moves_left = value
@@ -24,7 +30,7 @@ var moves_left := 15 :
 var parcel_type := "none" :
 	set(value):
 		parcel_type = value
-		update_parcel_ui()
+		parcel_type_changed.emit(value)
 
 var fragile_dashes := 4 :
 	set(value):
@@ -79,15 +85,12 @@ func _unhandled_input(event) -> void:
 func update_parcel_ui() -> void:
 	match parcel_type:
 		"normal":
-			parcel_type_changed.emit("PARCEL: NORMAL")
 			parcel_status_changed.emit("")
 
 		"fragile":
-			parcel_type_changed.emit("PARCEL: FRAGILE")
 			parcel_status_changed.emit("%d dashes left" % fragile_dashes)
 
 		"flammable":
-			parcel_type_changed.emit("PARCEL: FLAMMABLE")
 			if is_burning:
 				parcel_status_changed.emit("BURNING! %d turns left" % (4 - burn_turns))
 			else:

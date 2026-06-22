@@ -59,19 +59,15 @@ text = "MOVES LEFT:"
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ParcelType" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=420153094]
+[node name="ParcelImage" type="TextureRect" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=705411438]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PARCEL:"
+texture = ExtResource("2_ndsgl")
+expand_mode = 4
 
 [node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1592924229]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=705411438]
-layout_mode = 2
-texture = ExtResource("2_ndsgl")
-expand_mode = 4
 
 [node name="RightPanel" type="Control" parent="HUD" unique_id=1321337113]
 layout_mode = 1
@@ -124,10 +120,12 @@ text = "Retry"
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="TextureRect" type="TextureRect" parent="HUD/RightPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=631436980]
+[node name="PlayerImage" type="TextureRect" parent="HUD/RightPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=631436980]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_2yath")
 expand_mode = 4
+stretch_mode = 5
 
 [connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="HUD" method="_on_back_pressed"]
 [connection signal="pressed" from="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer/Retry" to="HUD" method="_on_retry_pressed"]
