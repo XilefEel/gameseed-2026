@@ -7,14 +7,14 @@ extends Control
 @onready var player_image: TextureRect = %PlayerImage
 
 const PARCEL_TEXTURES = {
-	"normal": preload("res://assets/sprites/normal.png"),
-	"fragile": preload("res://assets/sprites/fragile.png"),
-	"flammable": preload("res://assets/sprites/flammable.png"),
+	"normal": preload("res://assets/sprites/parcel/normal.png"),
+	"fragile": preload("res://assets/sprites/parcel/fragile.png"),
+	"flammable": preload("res://assets/sprites/parcel/flammable.png"),
 }
 
 const PLAYER_TEXTURES = {
-	"alive": preload("res://assets/sprites/cahyo.png"),
-	"dead": preload("res://assets/sprites/cahyo_dead.png")
+	"alive": preload("res://assets/sprites/player/cahyo.png"),
+	"dead": preload("res://assets/sprites/player/cahyo_dead.png")
 }
 
 func setup(player: Player) -> void:

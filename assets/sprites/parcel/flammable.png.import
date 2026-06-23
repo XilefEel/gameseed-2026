@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc7cnwcqglyde"
-path="res://.godot/imported/fragile.png-0af1c9b6c8dca7f639ca2ed14abf8712.ctex"
+uid="uid://wxu8rm7a7x86"
+path="res://.godot/imported/flammable.png-7790e4537a284353342763264c1768f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fragile.png"
-dest_files=["res://.godot/imported/fragile.png-0af1c9b6c8dca7f639ca2ed14abf8712.ctex"]
+source_file="res://assets/sprites/parcel/flammable.png"
+dest_files=["res://.godot/imported/flammable.png-7790e4537a284353342763264c1768f4.ctex"]
 
 [params]
 

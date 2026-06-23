@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c500olntqq0yr"
-path="res://.godot/imported/asteroid.png-583baaf8ee294f0c80fb8778fbd109f4.ctex"
+uid="uid://dg1esfdmpoen8"
+path="res://.godot/imported/blackhole.png-7068a9c7031aa2e2802423d222adf9cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/asteroid.png"
-dest_files=["res://.godot/imported/asteroid.png-583baaf8ee294f0c80fb8778fbd109f4.ctex"]
+source_file="res://assets/sprites/entities/blackhole.png"
+dest_files=["res://.godot/imported/blackhole.png-7068a9c7031aa2e2802423d222adf9cf.ctex"]
 
 [params]
 

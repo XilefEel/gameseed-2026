@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fcvugx43bi8k"
-path="res://.godot/imported/cahyo.png-c13e6f2241fce9d509f85d2897c2d2bc.ctex"
+uid="uid://c500olntqq0yr"
+path="res://.godot/imported/asteroid.png-0855a5c0b2fb392fbb1f0404aeccffbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cahyo.png"
-dest_files=["res://.godot/imported/cahyo.png-c13e6f2241fce9d509f85d2897c2d2bc.ctex"]
+source_file="res://assets/sprites/entities/asteroid.png"
+dest_files=["res://.godot/imported/asteroid.png-0855a5c0b2fb392fbb1f0404aeccffbd.ctex"]
 
 [params]
 

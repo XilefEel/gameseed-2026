@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cs742ar3k5w4m"]
 
 [ext_resource type="Script" uid="uid://7p2p8ameynj0" path="res://scripts/entities/pirate.gd" id="1_hktas"]
-[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://assets/sprites/pirate.svg" id="2_ran7y"]
-[ext_resource type="AudioStream" uid="uid://c8fwxdcuaipjg" path="res://assets/sfx/pirate_notice.mp3" id="3_ran7y"]
+[ext_resource type="Texture2D" uid="uid://ba65xjnhk3g8e" path="res://assets/sprites/entities/pirate.svg" id="2_ran7y"]
+[ext_resource type="AudioStream" uid="uid://c8fwxdcuaipjg" path="res://assets/sfx/entities/pirate_notice.mp3" id="3_ran7y"]
 
 [node name="Pirate" type="Node2D" unique_id=1763503299]
 script = ExtResource("1_hktas")

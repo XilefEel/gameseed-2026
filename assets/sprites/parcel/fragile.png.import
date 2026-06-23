@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg1esfdmpoen8"
-path="res://.godot/imported/blackhole.png-7508a79e52f18fb0ee34edb575111a4d.ctex"
+uid="uid://dc7cnwcqglyde"
+path="res://.godot/imported/fragile.png-7517fd8fcfc5c17c2fe58e4ac13356b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/blackhole.png"
-dest_files=["res://.godot/imported/blackhole.png-7508a79e52f18fb0ee34edb575111a4d.ctex"]
+source_file="res://assets/sprites/parcel/fragile.png"
+dest_files=["res://.godot/imported/fragile.png-7517fd8fcfc5c17c2fe58e4ac13356b0.ctex"]
 
 [params]
 
