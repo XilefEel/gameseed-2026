@@ -2,10 +2,19 @@ class_name Game
 extends Node2D
 
 @onready var player: Player = $Grid/Player
+@onready var grid: Grid = $Grid
 @onready var hud: Control = $"UI/HUD"
+@onready var dialogue_box := $DialogueBox
 
 func _ready() -> void:
+	player.set_process_unhandled_input(false)
 	hud.setup(player)
+	
+	var dialogue = LevelLoader.current_dialogue
+	if dialogue.size() > 0:
+		await dialogue_box.play(dialogue)
+
+	player.set_process_unhandled_input(true)
 
 
 func game_over() -> void:

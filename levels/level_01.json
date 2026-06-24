@@ -51,5 +51,10 @@
   "blackholes": [[5, 5]],
   "pirates": [[2, 4]],
   "portals": [],
-  "hotspots": []
+  "hotspots": [],
+  "dialogue": [
+    { "character": "ojol", "text": "Another delivery... in space?!" },
+    { "character": "boss", "text": "Just deliver the package, no questions." },
+    { "character": "ojol", "text": "...this job is getting weird." }
+  ]
 }

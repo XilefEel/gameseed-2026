@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0wqb1rjxbtrg" path="res://scripts/game.gd" id="1_s0nni"]
 [ext_resource type="PackedScene" uid="uid://bbqmqxbcjdkpc" path="res://scenes/ui/Background.tscn" id="2_hmsq1"]
+[ext_resource type="PackedScene" uid="uid://c33300h72e6vn" path="res://scenes/ui/DialogueBox.tscn" id="2_hqrlp"]
 [ext_resource type="PackedScene" uid="uid://6cp3cov00ao7" path="res://scenes/levels/Grid.tscn" id="5_hqrlp"]
 [ext_resource type="PackedScene" uid="uid://bvheo118c67au" path="res://scenes/levels/LevelUI.tscn" id="6_hqrlp"]
 [ext_resource type="Script" uid="uid://pv7kbvkt0f0u" path="res://scripts/core/camera.gd" id="8_400sg"]
@@ -12,6 +13,9 @@ script = ExtResource("1_s0nni")
 [node name="Background" parent="." unique_id=1744534265 instance=ExtResource("2_hmsq1")]
 
 [node name="UI" parent="." unique_id=792363502 instance=ExtResource("6_hqrlp")]
+
+[node name="DialogueBox" parent="." unique_id=59542566 instance=ExtResource("2_hqrlp")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=801784990]
 position = Vector2(80, 80)

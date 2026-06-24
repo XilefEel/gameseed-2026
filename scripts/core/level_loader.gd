@@ -13,7 +13,8 @@ const DIR_MAP = {
 	"left": Vector2i.LEFT,
 	"right": Vector2i.RIGHT
 }
-		
+
+static var current_dialogue: Array = []
 
 static func load_level(file_path: String, grid: Grid) -> void:
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -29,6 +30,8 @@ static func load_level(file_path: String, grid: Grid) -> void:
 	var player = grid.get_node("Player")
 	player.moves_left = data["moves"]
 	player.parcel_type = data["parcel_type"]
+
+	current_dialogue = data.get("dialogue", [])
 
 	grid.size = data["grid_size"]
 	grid.start_cell = Vector2i(data["start_cell"][0], data["start_cell"][1])

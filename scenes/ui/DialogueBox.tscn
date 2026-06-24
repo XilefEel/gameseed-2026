@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c33300h72e6vn"]
+
+[ext_resource type="Script" uid="uid://b8v1kr1cdurjc" path="res://scripts/ui/dialogue_box.gd" id="1_ggoq5"]
+[ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="2_nfm5p"]
+
+[node name="DialogueBox" type="CanvasLayer" unique_id=59542566]
+script = ExtResource("1_ggoq5")
+
+[node name="Panel" type="Panel" parent="." unique_id=435320583]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=903036552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=230445573]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Character" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1618543666]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_nfm5p")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=2027618827]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="Panel/VBoxContainer/VBoxContainer" unique_id=414974011]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cahyo"
+
+[node name="DialogueText" type="Label" parent="Panel/VBoxContainer/VBoxContainer" unique_id=556643535]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test dialogue"
+
+[node name="Label" type="Label" parent="Panel" unique_id=1756707812]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 312.0
+offset_right = 10.0
+offset_bottom = 335.0
