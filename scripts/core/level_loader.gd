@@ -16,6 +16,7 @@ const DIR_MAP = {
 
 static var current_dialogue: Array = []
 
+
 static func load_level(file_path: String, grid: Grid) -> void:
 	var file = FileAccess.open(file_path, FileAccess.READ)
 

@@ -4,9 +4,16 @@ signal finished
 
 @onready var name_label: Label = %CharacterName
 @onready var dialogue_label: Label = %DialogueText
+@onready var character_sprite: TextureRect = %CharacterSprite
+@onready var sprite_container: HBoxContainer = %SpriteContainer
 
 var lines: Array = []
 var current_line := 0
+
+const CHARACTER_SPRITES = {
+    "Cahyo": preload("res://assets/sprites/player/cahyo.png"),
+    "Boss": preload("res://assets/sprites/player/boss.png")
+}
 
 func play(dialogue: Array) -> void:
     lines = dialogue
@@ -20,6 +27,10 @@ func show_line() -> void:
     var entry = lines[current_line]
     name_label.text = entry["character"]
     dialogue_label.text = entry["text"]
+    
+    var position = entry.get("position", "left")
+    character_sprite.texture = CHARACTER_SPRITES.get(entry["character"], null)
+    sprite_container.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN if position == "left" else Control.SIZE_SHRINK_END
 
 
 func _unhandled_input(event) -> void:
