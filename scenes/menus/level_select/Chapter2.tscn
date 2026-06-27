@@ -1,23 +1,23 @@
-[gd_scene format=3 uid="uid://c4kf2yol6ba8k"]
+[gd_scene format=3 uid="uid://cp10u6gqax31"]
 
-[ext_resource type="Script" uid="uid://bl34kxyjk67p7" path="res://scripts/ui/level_select/chapter_01.gd" id="1_dbyaq"]
-[ext_resource type="Texture2D" uid="uid://rcehdkcp17rv" path="res://assets/ui/level_select/ch_01.png" id="2_tyiyf"]
-[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_wp86k"]
+[ext_resource type="Script" uid="uid://5krxqh2hq17h" path="res://scripts/menus/level_select/chapter_02.gd" id="1_ad3o4"]
+[ext_resource type="Texture2D" uid="uid://w8vbukqygpqc" path="res://assets/ui/level_select/ch_02.png" id="2_wg7h5"]
+[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="3_m7mqe"]
 
 [node name="LevelSelect" type="Node2D" unique_id=1905418079]
-script = ExtResource("1_dbyaq")
+script = ExtResource("1_ad3o4")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1347480485]
 offset_right = 1153.0
 offset_bottom = 648.0
-texture = ExtResource("2_tyiyf")
+texture = ExtResource("2_wg7h5")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=818444936]
 offset_right = 1150.0
 offset_bottom = 647.0
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1969224495]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1890416643]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 
@@ -29,20 +29,20 @@ size_flags_vertical = 4
 layout_mode = 2
 text = "Prev"
 
-[node name="CenterContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=614808778]
+[node name="CenterContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1381849000]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CenterContainer" unique_id=592084799]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CenterContainer" unique_id=16553201]
 layout_mode = 2
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_bottom = 80
 
-[node name="Label" type="Label" parent="HBoxContainer/CenterContainer/MarginContainer" unique_id=1562069877]
+[node name="Label" type="Label" parent="HBoxContainer/CenterContainer/MarginContainer" unique_id=1672342759]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_wp86k")
+theme_override_fonts/font = ExtResource("3_m7mqe")
 theme_override_font_sizes/font_size = 40
-text = "Chapter 1: Asteroid Alley"
+text = "Chapter 2: Bandung - Sky of Flames"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer" unique_id=7818737]
@@ -53,7 +53,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=97117711]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=182519755]
 layout_mode = 2
 theme_override_constants/margin_right = 40
 

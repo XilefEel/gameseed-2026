@@ -5,11 +5,8 @@ extends Node2D
 
 
 const LEVELS = [
-	"res://levels/ch_02/level_01.json",
-	"res://levels/ch_02/level_02.json",
-	"res://levels/ch_02/level_03.json",
-	"res://levels/ch_02/level_04.json",
-	"res://levels/ch_02/level_05.json",
+	"res://levels/ch_01/level_01.json",
+	"res://levels/ch_01/level_02.json",
 ]
 
 
@@ -25,15 +22,15 @@ func _ready() -> void:
 		var level_path = LEVELS[i]
 		button.pressed.connect(func() -> void:
 			LevelLoader.current_level = level_path
-			LevelLoader.current_chapter = 2
-			LevelLoader.current_chapter_scene = "res://scenes/ui/level_select/Chapter2.tscn"
+			LevelLoader.current_chapter = 1
+			LevelLoader.current_chapter_scene = "res://scenes/menus/level_select/Chapter1.tscn"
 			get_tree().change_scene_to_file("res://scenes/levels/Game.tscn")
 		)
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/level_select/Chapter1.tscn")
+	pass
 
 
 func _on_button_pressed_2() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/menus/level_select/Chapter2.tscn")
