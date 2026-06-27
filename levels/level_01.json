@@ -52,21 +52,24 @@
   "pirates": [[2, 4]],
   "portals": [],
   "hotspots": [],
-  "dialogue": [
-    {
-      "character": "Cahyo",
-      "text": "Another delivery!? I just got back from the last one!",
-      "position": "left"
+  "dialogue": {
+    "positions": {
+      "left": "Cahyo",
+      "right": "Boss"
     },
-    {
-      "character": "Boss",
-      "text": "Just deliver the package, no questions.",
-      "position": "right"
-    },
-    {
-      "character": "Cahyo",
-      "text": "I'm definitely working overtime after this. I hope the pay is worth it.",
-      "position": "left"
-    }
-  ]
+    "lines": [
+      {
+        "character": "Cahyo",
+        "text": "Another delivery!? I just got back from the last one!"
+      },
+      {
+        "character": "Boss",
+        "text": "Just deliver the package, no questions."
+      },
+      {
+        "character": "Cahyo",
+        "text": "I'm definitely working overtime after this. I hope the pay is worth it."
+      }
+    ]
+  }
 }

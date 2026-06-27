@@ -4,25 +4,42 @@ signal finished
 
 @onready var name_label: Label = %CharacterName
 @onready var dialogue_label: Label = %DialogueText
-@onready var character_sprite: TextureRect = %CharacterSprite
-@onready var sprite_container: HBoxContainer = %SpriteContainer
+
+@onready var portrait_slots := {
+	"left": %LeftPortrait,
+	"center": %CenterPortrait,
+	"right": %RightPortrait,
+}
+
 @onready var sfx_talk: AudioStreamPlayer2D = %SFX_Talk
 
 var lines: Array = []
+var character_positions: Dictionary = {}
 var current_line := 0
 var is_typing := false
-
-const CHAR_DELAY := 0.03
 
 const CHARACTER_SPRITES = {
 	"Cahyo": preload("res://assets/sprites/player/cahyo.png"),
 	"Boss": preload("res://assets/sprites/player/boss.png")
 }
 
-const SILENT_CHARS = [".", ",", "!", "?", "\n"]
+const DIALOGUE_DELAYS = {
+	"normal": 0.03,
+	"comma": 0.15,
+	"period": 0.3,
+}
 
-func play(dialogue: Array) -> void:
-	lines = dialogue
+const SILENT_CHARS = [".", ",", "!", "?", "\n"]
+const ACTIVE_COLOR := Color.WHITE
+const INACTIVE_COLOR := Color(0.35, 0.35, 0.35, 0.6)
+
+
+func play(dialogue: Dictionary) -> void:
+	lines = dialogue["lines"]
+	character_positions = dialogue["positions"]
+
+	setup_portraits()
+
 	current_line = 0
 	show()
 	show_line()
@@ -35,13 +52,7 @@ func show_line() -> void:
 	name_label.text = entry["character"]
 	dialogue_label.text = entry["text"]
 
-	var position = entry.get("position", "left")
-	character_sprite.texture = CHARACTER_SPRITES.get(entry["character"], null)
-	sprite_container.size_flags_horizontal = (
-		Control.SIZE_SHRINK_BEGIN
-		if position == "left"
-		else Control.SIZE_SHRINK_END
-	)
+	update_portraits(entry["character"])
 
 	dialogue_label.visible_characters = 0
 	is_typing = true
@@ -54,9 +65,47 @@ func show_line() -> void:
 			sfx_talk.pitch_scale = randf_range(0.9, 1.1)
 			sfx_talk.play()
 
-		await get_tree().create_timer(CHAR_DELAY).timeout
+		var delay := DIALOGUE_DELAYS["normal"]
+
+		match c:
+			",":
+				delay = DIALOGUE_DELAYS["comma"]
+			".", "!", "?":
+				delay = DIALOGUE_DELAYS["period"]
+
+		await get_tree().create_timer(delay).timeout
 
 	is_typing = false
+
+
+func setup_portraits():
+	for position in portrait_slots:
+		var slot = portrait_slots[position]
+		var character = character_positions.get(position)
+
+		if character == null:
+			slot.hide()
+			continue
+
+		slot.show()
+		slot.texture = CHARACTER_SPRITES.get(character)
+
+	update_portraits("")
+
+
+func update_portraits(active_character: String):
+	for position in portrait_slots:
+		var slot = portrait_slots[position]
+		var character = character_positions.get(position)
+
+		if character == null:
+			continue
+
+		slot.modulate = (
+			ACTIVE_COLOR
+			if character == active_character
+			else INACTIVE_COLOR
+		)
 
 
 func _unhandled_input(event) -> void:

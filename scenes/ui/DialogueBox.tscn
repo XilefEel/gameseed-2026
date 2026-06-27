@@ -41,10 +41,24 @@ theme_override_constants/margin_right = 40
 [node name="SpriteContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2" unique_id=230445573]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="CharacterSprite" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=1618543666]
+[node name="LeftPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=1618543666]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_nfm5p")
+expand_mode = 3
+
+[node name="CenterPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=1348785142]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_nfm5p")
+expand_mode = 3
+
+[node name="RightPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=640257186]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -78,10 +92,3 @@ text = "Test dialogue"
 [node name="SFX_Talk" type="AudioStreamPlayer2D" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer" unique_id=183600333]
 unique_name_in_owner = true
 stream = ExtResource("4_bjuha")
-
-[node name="Label" type="Label" parent="Panel" unique_id=1756707812]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 312.0
-offset_right = 10.0
-offset_bottom = 335.0
