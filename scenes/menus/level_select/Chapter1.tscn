@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bl34kxyjk67p7" path="res://scripts/menus/level_select/chapter_01.gd" id="1_onvbs"]
 [ext_resource type="Texture2D" uid="uid://rcehdkcp17rv" path="res://assets/ui/level_select/ch_01.png" id="2_fo4ik"]
-[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="3_cgjge"]
+[ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="3_onvbs"]
 
 [node name="LevelSelect" type="Node2D" unique_id=1905418079]
 script = ExtResource("1_onvbs")
@@ -27,6 +27,7 @@ size_flags_vertical = 4
 
 [node name="PrevButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=617553386]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_onvbs")
 text = "Prev"
 
 [node name="CenterContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=614808778]
@@ -40,7 +41,7 @@ theme_override_constants/margin_bottom = 80
 
 [node name="Label" type="Label" parent="HBoxContainer/CenterContainer/MarginContainer" unique_id=1562069877]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_cgjge")
+theme_override_fonts/font = ExtResource("3_onvbs")
 theme_override_font_sizes/font_size = 40
 text = "Chapter 1: Asteroid Alley"
 horizontal_alignment = 1
@@ -63,6 +64,7 @@ size_flags_vertical = 4
 
 [node name="NextButton" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=552346571]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_onvbs")
 text = "Next"
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/PrevButton" to="." method="_on_button_pressed"]

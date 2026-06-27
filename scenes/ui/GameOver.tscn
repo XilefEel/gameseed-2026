@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://defhay0gqd14u"]
 
 [ext_resource type="Script" uid="uid://byeccmpsady8k" path="res://scripts/ui/game_over_screen.gd" id="1_6bcno"]
-[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_57v1k"]
+[ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_57v1k"]
 
 [node name="GameOver" type="Control" unique_id=1175204752]
 layout_mode = 3
@@ -20,7 +20,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_57v1k")
 theme_override_font_sizes/font_size = 40
-text = "Game Over!"
+text = "GAME OVER!"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=885748581]
 layout_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bll3woetjhrlk"]
 
 [ext_resource type="Script" uid="uid://7sbkhhgf04xk" path="res://scripts/menus/main_menu.gd" id="1_yqorp"]
-[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="2_6jbdy"]
+[ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_bqojv"]
 
 [node name="MainMenu" type="Control" unique_id=1615577758]
 layout_mode = 3
@@ -34,21 +34,21 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1250402074]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6jbdy")
+theme_override_fonts/font = ExtResource("2_bqojv")
 theme_override_font_sizes/font_size = 40
 text = "INTERSTELLAR OJOL"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=164456067]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_6jbdy")
+theme_override_fonts/font = ExtResource("2_bqojv")
 theme_override_font_sizes/font_size = 20
 text = "Play"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1240392324]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_6jbdy")
+theme_override_fonts/font = ExtResource("2_bqojv")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 

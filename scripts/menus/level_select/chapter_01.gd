@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var level_container = $HBoxContainer/CenterContainer/VBoxContainer/LevelContainer
-@onready var font = preload("res://assets/fonts/font.ttf")
+@onready var font = preload("res://assets/fonts/Amaranth-Regular.ttf")
 
 
 const LEVELS = [

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://uoopa57rxfs5"
-path="res://.godot/imported/font.ttf-39b250d5b3aa0fc62f2ec61dd6a2edd2.fontdata"
+uid="uid://d2t7v7bvos2no"
+path="res://.godot/imported/Amaranth-Regular.ttf-ca6bab67aabb1324bd2b3b8330380f10.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/font.ttf"
-dest_files=["res://.godot/imported/font.ttf-39b250d5b3aa0fc62f2ec61dd6a2edd2.fontdata"]
+source_file="res://assets/fonts/Amaranth-Regular.ttf"
+dest_files=["res://.godot/imported/Amaranth-Regular.ttf-ca6bab67aabb1324bd2b3b8330380f10.fontdata"]
 
 [params]
 

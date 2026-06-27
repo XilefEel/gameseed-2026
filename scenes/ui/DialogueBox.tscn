@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8v1kr1cdurjc" path="res://scripts/ui/dialogue_box.gd" id="1_ggoq5"]
 [ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="2_nfm5p"]
-[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="3_nfm5p"]
+[ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="3_bjuha"]
 [ext_resource type="AudioStream" uid="uid://b6riu8g3fxhmr" path="res://assets/sfx/ui/talk.mp3" id="4_bjuha"]
 
 [node name="DialogueBox" type="CanvasLayer" unique_id=59542566]
@@ -75,14 +75,14 @@ layout_mode = 2
 [node name="CharacterName" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer" unique_id=414974011]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_nfm5p")
+theme_override_fonts/font = ExtResource("3_bjuha")
 theme_override_font_sizes/font_size = 40
 text = "Cahyo"
 
 [node name="DialogueText" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer" unique_id=556643535]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_nfm5p")
+theme_override_fonts/font = ExtResource("3_bjuha")
 theme_override_font_sizes/font_size = 20
 text = "Test dialogue"
 
