@@ -40,7 +40,7 @@ func setup(player: Player) -> void:
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/LevelSelect.tscn")
+	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
 
 
 func _on_retry_pressed():
