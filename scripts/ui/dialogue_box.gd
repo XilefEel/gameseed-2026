@@ -33,6 +33,16 @@ const SILENT_CHARS = [".", ",", "!", "?", "\n"]
 const ACTIVE_COLOR := Color.WHITE
 const INACTIVE_COLOR := Color(0.35, 0.35, 0.35, 0.6)
 
+const ACTIVE_SCALE := Vector2(1.05, 1.05)
+const INACTIVE_SCALE := Vector2(1.0, 1.0)
+
+
+func _ready():
+	await get_tree().process_frame
+
+	for slot in portrait_slots.values():
+		slot.pivot_offset = slot.size / 2.0
+
 
 func play(dialogue: Dictionary) -> void:
 	lines = dialogue["lines"]
@@ -111,6 +121,18 @@ func update_portraits(active_character: String):
 			else INACTIVE_COLOR
 		)
 
+		var target_scale = (
+			ACTIVE_SCALE
+			if character == active_character
+			else INACTIVE_SCALE
+		)
+		
+		create_tween().tween_property(
+			slot,
+			"scale",
+			target_scale,
+			0.15
+		)
 
 func _unhandled_input(event) -> void:
 	if !event.is_action_pressed("ui_accept"):

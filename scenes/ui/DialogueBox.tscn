@@ -47,21 +47,18 @@ size_flags_vertical = 3
 [node name="LeftPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=1618543666]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 texture = ExtResource("2_nfm5p")
 expand_mode = 3
 
 [node name="CenterPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=1348785142]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 texture = ExtResource("2_nfm5p")
 expand_mode = 3
 
 [node name="RightPortrait" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/SpriteContainer" unique_id=640257186]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 texture = ExtResource("2_nfm5p")
 expand_mode = 3
 
