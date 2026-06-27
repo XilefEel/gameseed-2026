@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cp10u6gqax31"]
+
+[ext_resource type="Script" uid="uid://5krxqh2hq17h" path="res://scripts/ui/level_select/chapter_02.gd" id="1_htuyw"]
+[ext_resource type="Texture2D" uid="uid://w8vbukqygpqc" path="res://assets/ui/level_select/ch_02.png" id="2_crjli"]
+[ext_resource type="FontFile" uid="uid://uoopa57rxfs5" path="res://assets/fonts/font.ttf" id="3_ca4jx"]
+
+[node name="LevelSelect" type="Node2D" unique_id=1905418079]
+script = ExtResource("1_htuyw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1347480485]
+offset_right = 1153.0
+offset_bottom = 648.0
+texture = ExtResource("2_crjli")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=818444936]
+offset_right = 1150.0
+offset_bottom = 647.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1890416643]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1846510121]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PrevButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=617553386]
+layout_mode = 2
+text = "Prev"
+
+[node name="CenterContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1381849000]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CenterContainer" unique_id=16553201]
+layout_mode = 2
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="Label" type="Label" parent="HBoxContainer/CenterContainer/MarginContainer" unique_id=1672342759]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ca4jx")
+theme_override_font_sizes/font_size = 40
+text = "Chapter 2: Bandung - Sky of Flames"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer" unique_id=7818737]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelContainer" type="HBoxContainer" parent="HBoxContainer/CenterContainer/VBoxContainer" unique_id=676542738]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=182519755]
+layout_mode = 2
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=39226805]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NextButton" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=552346571]
+layout_mode = 2
+text = "Next"
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/PrevButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/NextButton" to="." method="_on_button_pressed_2"]

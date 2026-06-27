@@ -26,13 +26,13 @@ func _ready() -> void:
 		button.pressed.connect(func() -> void:
 			LevelLoader.current_level = level_path
 			LevelLoader.current_chapter = 2
-			LevelLoader.current_chapter_scene = "res://scenes/ui/chapters/Chapter2.tscn"
+			LevelLoader.current_chapter_scene = "res://scenes/ui/level_select/Chapter2.tscn"
 			get_tree().change_scene_to_file("res://scenes/levels/Game.tscn")
 		)
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/chapters/Chapter1.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/level_select/Chapter1.tscn")
 
 
 func _on_button_pressed_2() -> void:
