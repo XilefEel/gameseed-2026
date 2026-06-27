@@ -38,6 +38,10 @@ func play(dialogue: Dictionary) -> void:
 	lines = dialogue["lines"]
 	character_positions = dialogue["positions"]
 
+	if lines.is_empty():
+		finished.emit()
+		return
+
 	setup_portraits()
 
 	current_line = 0

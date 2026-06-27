@@ -33,8 +33,8 @@ static func load_level(file_path: String, grid: Grid) -> void:
 	player.parcel_type = data["parcel_type"]
 
 	current_dialogue = data.get("dialogue", {
-		"lines": [],
-		"positions": {}
+		"positions": {},
+		"lines": []
 	})
 
 	grid.size = data["grid_size"]
