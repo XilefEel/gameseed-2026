@@ -53,7 +53,6 @@ func update_stopwatch(moves: int, maximum: int) -> void:
 	tween.parallel().tween_property(stopwatch, "value", target_val, 0.2)
 
 
-
 func _on_back_pressed():
 	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
 

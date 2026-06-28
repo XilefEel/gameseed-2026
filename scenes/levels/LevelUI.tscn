@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtwgqefw6nq4t" path="res://scripts/ui/hud.gd" id="1_3e1t0"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_8avov"]
-[ext_resource type="Texture2D" uid="uid://jkg7hg00ajrh" path="res://assets/sprites/parcel/normal.png" id="2_ndsgl"]
+[ext_resource type="Texture2D" uid="uid://5texqvq55wiv" path="res://assets/sprites/parcel/normal.png" id="2_ndsgl"]
 [ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="3_2yath"]
 [ext_resource type="Texture2D" uid="uid://c3p7u7rre6ajo" path="res://assets/ui/clock_base.png" id="3_j3tnw"]
 [ext_resource type="Texture2D" uid="uid://extpmqakdfdm" path="res://assets/ui/clock_red.png" id="3_p8r62"]
@@ -51,21 +51,20 @@ anchor_bottom = 1.0
 offset_right = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer" unique_id=231036993]
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=416495655]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="StopWatch" type="TextureProgressBar" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=824797435]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 222)
+custom_minimum_size = Vector2(0, 206)
 layout_mode = 2
 fill_mode = 5
 nine_patch_stretch = true
@@ -75,13 +74,13 @@ texture_progress = ExtResource("4_4gpf0")
 
 [node name="ClockHand" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=353036545]
 unique_name_in_owner = true
-position = Vector2(111, 111)
-scale = Vector2(0.375, 0.35534936)
+position = Vector2(103, 103)
+scale = Vector2(0.32421875, 0.30722913)
 texture = ExtResource("5_4gpf0")
 
 [node name="Center" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=110253993]
-position = Vector2(111.000015, 115.000015)
-scale = Vector2(0.40112305, 0.40112305)
+position = Vector2(103, 103)
+scale = Vector2(0.29431152, 0.29431152)
 texture = ExtResource("5_gkiic")
 
 [node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch/Center" unique_id=786712554]
@@ -92,7 +91,7 @@ offset_right = 44.87399
 offset_bottom = 40.64695
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8avov")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 72
 text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1
