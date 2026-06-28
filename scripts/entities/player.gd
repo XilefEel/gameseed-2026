@@ -9,10 +9,6 @@ signal is_alive_changed(is_alive: bool)
 @onready var grid: Grid = get_parent()
 @onready var movement: MovementController = $Movement
 
-@onready var sfx_move := $"SFX_Move"
-@onready var sfx_dash := $"SFX_Dash"
-@onready var sfx_die := $"SFX_Die"
-
 const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO

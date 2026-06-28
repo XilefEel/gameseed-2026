@@ -11,8 +11,6 @@ signal finished
 	"right": %RightPortrait,
 }
 
-@onready var sfx_talk: AudioStreamPlayer2D = %SFX_Talk
-
 var lines: Array = []
 var character_positions: Dictionary = {}
 var current_line := 0
@@ -76,8 +74,7 @@ func show_line() -> void:
 		
 		var c = dialogue_label.text[dialogue_label.visible_characters - 1]
 		if c not in SILENT_CHARS:
-			sfx_talk.pitch_scale = randf_range(0.9, 1.1)
-			sfx_talk.play()
+			AudioManager.play_sfx(AudioManager.SFX.TALK)
 
 		var delay := DIALOGUE_DELAYS["normal"]
 

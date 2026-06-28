@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b8v1kr1cdurjc" path="res://scripts/ui/dialogue_box.gd" id="1_ggoq5"]
 [ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="2_nfm5p"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="3_bjuha"]
-[ext_resource type="AudioStream" uid="uid://b6riu8g3fxhmr" path="res://assets/sfx/ui/talk.mp3" id="4_bjuha"]
 
 [node name="DialogueBox" type="CanvasLayer" unique_id=59542566]
 script = ExtResource("1_ggoq5")
@@ -85,7 +84,3 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bjuha")
 theme_override_font_sizes/font_size = 20
 text = "Test dialogue"
-
-[node name="SFX_Talk" type="AudioStreamPlayer2D" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer" unique_id=183600333]
-unique_name_in_owner = true
-stream = ExtResource("4_bjuha")

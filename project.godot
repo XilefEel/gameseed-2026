@@ -15,6 +15,10 @@ run/main_scene="uid://bll3woetjhrlk"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/entities/pirate.svg"
 
+[autoload]
+
+AudioManager="*uid://c20p5n2oewq7c"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

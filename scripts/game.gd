@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func game_over() -> void:
-	player.sfx_die.play()
+	AudioManager.play_sfx(AudioManager.SFX.DIE)
 	player.is_moving = true
 	player.is_alive = false
 	await get_tree().create_timer(1.5).timeout

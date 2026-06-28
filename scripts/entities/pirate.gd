@@ -35,7 +35,7 @@ func check_line_of_sight(player_cell: Vector2i) -> void:
 		check_cell += dir
 
 	is_chasing = true
-	sfx_found.play()
+	AudioManager.play_sfx(AudioManager.SFX.PIRATE_NOTICE)
 
 
 func setup_astar() -> void:

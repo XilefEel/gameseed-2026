@@ -37,7 +37,7 @@ func move(dir: Vector2i) -> void:
 		return
 
 	var next = player.current_cell + dir
-	player.sfx_move.play()
+	AudioManager.play_sfx(AudioManager.SFX.MOVE)
 
 	if not grid.is_in_bounds(next) or grid.is_debris(next) or grid.is_house(next):
 		return
@@ -116,7 +116,7 @@ func dash(dir: Vector2i) -> void:
 	dash_path = dash_info["path"]
 	var used_portal = dash_info["used_portal"]
 	
-	player.sfx_dash.play()
+	AudioManager.play_sfx(AudioManager.SFX.DASH)
 
 	var stop_cell = dash_path[-1]
 
