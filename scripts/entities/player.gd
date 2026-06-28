@@ -8,10 +8,12 @@ signal is_alive_changed(is_alive: bool)
 
 @onready var grid: Grid = get_parent()
 @onready var movement: MovementController = $Movement
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 const MOVE_SPEED := 200.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
+var last_dir := Vector2i.ZERO
 
 var is_alive := true :
 	set(value):
@@ -54,6 +56,15 @@ func _ready() -> void:
 
 	current_cell = grid.start_cell
 	position = grid.map_to_local(grid.start_cell)
+	update_animation()
+
+
+func update_animation() -> void:
+	match last_dir:
+		Vector2i.UP: sprite.play("idle_up")
+		Vector2i.DOWN: sprite.play("idle_down")
+		Vector2i.LEFT: sprite.play("idle_left")
+		Vector2i.RIGHT: sprite.play("idle_right")
 
 
 func _unhandled_input(event) -> void:
@@ -72,6 +83,8 @@ func _unhandled_input(event) -> void:
 		dir = Vector2i.RIGHT
 
 	if dir != Vector2i.ZERO:
+		last_dir = dir
+		update_animation()
 		if Input.is_physical_key_pressed(KEY_SHIFT):
 			movement.dash(dir)
 		else:
