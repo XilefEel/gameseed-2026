@@ -4,8 +4,13 @@
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_8avov"]
 [ext_resource type="Texture2D" uid="uid://jkg7hg00ajrh" path="res://assets/sprites/parcel/normal.png" id="2_ndsgl"]
 [ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="3_2yath"]
+[ext_resource type="Texture2D" uid="uid://c3p7u7rre6ajo" path="res://assets/ui/clock_base.png" id="3_j3tnw"]
+[ext_resource type="Texture2D" uid="uid://extpmqakdfdm" path="res://assets/ui/clock_red.png" id="3_p8r62"]
+[ext_resource type="Texture2D" uid="uid://bcwdasas04g5t" path="res://assets/ui/clock_green.png" id="4_4gpf0"]
 [ext_resource type="Texture2D" uid="uid://cn2bvu4133wil" path="res://assets/ui/buttons/exit.png" id="4_8avov"]
 [ext_resource type="Texture2D" uid="uid://d2eq4xos0jwk1" path="res://assets/ui/buttons/exit_click.png" id="5_1l4ph"]
+[ext_resource type="Texture2D" uid="uid://cq0n6bq6kuhld" path="res://assets/ui/clock_pointer.png" id="5_4gpf0"]
+[ext_resource type="Texture2D" uid="uid://dauc7xn0ns4e8" path="res://assets/ui/clock_number.png" id="5_gkiic"]
 [ext_resource type="Texture2D" uid="uid://2kncluy8qkwy" path="res://assets/ui/buttons/retry.png" id="5_o8jf8"]
 [ext_resource type="Texture2D" uid="uid://bexq8s8q1c46u" path="res://assets/ui/buttons/exit_hover.png" id="6_ebq0u"]
 [ext_resource type="Texture2D" uid="uid://b8uln8ysxxxrn" path="res://assets/ui/buttons/retry_click.png" id="8_p8r62"]
@@ -43,6 +48,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 24
@@ -57,12 +63,39 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1530078988]
+[node name="StopWatch" type="TextureProgressBar" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=824797435]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 222)
 layout_mode = 2
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = ExtResource("3_p8r62")
+texture_over = ExtResource("3_j3tnw")
+texture_progress = ExtResource("4_4gpf0")
+
+[node name="ClockHand" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=353036545]
+unique_name_in_owner = true
+position = Vector2(111, 111)
+scale = Vector2(0.375, 0.35534936)
+texture = ExtResource("5_4gpf0")
+
+[node name="Center" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=110253993]
+position = Vector2(111.000015, 115.000015)
+scale = Vector2(0.40112305, 0.40112305)
+texture = ExtResource("5_gkiic")
+
+[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch/Center" unique_id=786712554]
+unique_name_in_owner = true
+offset_left = -42.381046
+offset_top = -52.35305
+offset_right = 44.87399
+offset_bottom = 40.64695
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8avov")
-theme_override_font_sizes/font_size = 20
-text = "MOVES LEFT:"
+theme_override_font_sizes/font_size = 64
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1636362023]
 layout_mode = 2

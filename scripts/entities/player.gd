@@ -1,7 +1,7 @@
 class_name Player
 extends Node2D
 
-signal moves_changed(moves_left: int)
+signal moves_changed(moves_left: int, max_moves: int)
 signal parcel_type_changed(parcel_type: String)
 signal parcel_status_changed(parcel_status: String)
 signal is_alive_changed(is_alive: bool)
@@ -23,7 +23,7 @@ var is_alive := true :
 var moves_left := 15 :
 	set(value):
 		moves_left = value
-		moves_changed.emit(value)
+		moves_changed.emit(value, 15)
 
 var parcel_type := "none" :
 	set(value):

@@ -83,5 +83,3 @@ func is_in_yellow_zone(cell: Vector2i) -> bool:
 			return true
 			
 	return false
-
-
