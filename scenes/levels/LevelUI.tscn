@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://jkg7hg00ajrh" path="res://assets/sprites/parcel/normal.png" id="2_ndsgl"]
 [ext_resource type="Texture2D" uid="uid://fcvugx43bi8k" path="res://assets/sprites/player/cahyo.png" id="3_2yath"]
 [ext_resource type="Texture2D" uid="uid://cn2bvu4133wil" path="res://assets/ui/buttons/exit.png" id="4_8avov"]
+[ext_resource type="Texture2D" uid="uid://d2eq4xos0jwk1" path="res://assets/ui/buttons/exit_click.png" id="5_1l4ph"]
 [ext_resource type="Texture2D" uid="uid://2kncluy8qkwy" path="res://assets/ui/buttons/retry.png" id="5_o8jf8"]
+[ext_resource type="Texture2D" uid="uid://bexq8s8q1c46u" path="res://assets/ui/buttons/exit_hover.png" id="6_ebq0u"]
+[ext_resource type="Texture2D" uid="uid://b8uln8ysxxxrn" path="res://assets/ui/buttons/retry_click.png" id="8_p8r62"]
+[ext_resource type="Texture2D" uid="uid://crk30jydicne3" path="res://assets/ui/buttons/retry_hover.png" id="9_4gpf0"]
 
 [node name="LevelUI" type="CanvasLayer" unique_id=792363502]
 
@@ -119,6 +123,8 @@ alignment = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("4_8avov")
+texture_pressed = ExtResource("5_1l4ph")
+texture_hover = ExtResource("6_ebq0u")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -126,6 +132,8 @@ stretch_mode = 0
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 texture_normal = ExtResource("5_o8jf8")
+texture_pressed = ExtResource("8_p8r62")
+texture_hover = ExtResource("9_4gpf0")
 ignore_texture_size = true
 stretch_mode = 0
 
