@@ -9,7 +9,7 @@ script = ExtResource("1_hktas")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=610746208]
 position = Vector2(1.7881393e-07, -1.7881393e-07)
-scale = Vector2(0.106445305, 0.106445305)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_ran7y")
 
 [node name="SFX_Found" type="AudioStreamPlayer2D" parent="." unique_id=101451442]

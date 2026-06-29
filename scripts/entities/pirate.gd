@@ -64,7 +64,7 @@ func step(player_cell: Vector2i) -> void:
 
 	cell = Vector2i(path[1])
 	var target_pos = grid.map_to_local(cell)
-	var duration = position.distance_to(target_pos) / 200.0
+	var duration = position.distance_to(target_pos) / 600.0
 
 	create_tween().tween_property(
 		self,

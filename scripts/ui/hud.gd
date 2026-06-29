@@ -40,7 +40,7 @@ func setup(player: Player) -> void:
 	
 	parcel_image.texture = PARCEL_TEXTURES.get(player.parcel_type, null)
 	player.update_parcel_ui()
-	update_stopwatch(player.moves_left, 15)
+	update_stopwatch(player.moves_left, player.max_moves)
 
 
 func update_stopwatch(moves: int, maximum: int) -> void:

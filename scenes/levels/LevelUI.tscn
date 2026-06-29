@@ -148,7 +148,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/RightPanel/MarginContainer/VBoxContainer" unique_id=690741427]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Back" type="TextureButton" parent="HUD/RightPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1443201858]

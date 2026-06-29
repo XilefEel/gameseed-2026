@@ -2,12 +2,8 @@ class_name Camera
 extends Camera2D
 
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 func setup_camera(grid_size: int) -> void:
-	var grid_pixel_size = grid_size * 16
+	var grid_pixel_size = grid_size * 64
 	position = Vector2(grid_pixel_size / 2.0, grid_pixel_size / 2.0)
 
 	var viewport_size = get_viewport().get_visible_rect().size

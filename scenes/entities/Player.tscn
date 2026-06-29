@@ -145,11 +145,10 @@ animations = [{
 script = ExtResource("1_mdl7e")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=630635988]
-position = Vector2(1.4901161e-08, 1.4901161e-08)
-scale = Vector2(0.019064724, 0.019064719)
+scale = Vector2(0.08823531, 0.08823531)
 sprite_frames = SubResource("SpriteFrames_rafx0")
 animation = &"idle_right"
-frame_progress = 0.12028297
+frame_progress = 0.26402527
 
 [node name="Hazards" type="Node" parent="." unique_id=1300271871]
 script = ExtResource("3_70d11")

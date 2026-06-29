@@ -10,7 +10,7 @@ signal is_alive_changed(is_alive: bool)
 @onready var movement: MovementController = $Movement
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 
-const MOVE_SPEED := 200.0
+const MOVE_SPEED := 600.0
 var is_moving := false
 var current_cell := Vector2i.ZERO
 var last_dir := Vector2i.ZERO
@@ -20,10 +20,12 @@ var is_alive := true :
 		is_alive = value
 		is_alive_changed.emit(value)
 
+var max_moves := 15
+
 var moves_left := 15 :
 	set(value):
 		moves_left = value
-		moves_changed.emit(value, 15)
+		moves_changed.emit(value, max_moves)
 
 var parcel_type := "none" :
 	set(value):

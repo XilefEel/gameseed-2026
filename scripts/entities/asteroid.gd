@@ -15,7 +15,7 @@ func _ready() -> void:
 func step() -> void:
 	path_index = (path_index + 1) % path.size()
 	var target_pos = grid.map_to_local(path[path_index])
-	var duration = position.distance_to(target_pos) / 200.0
+	var duration = position.distance_to(target_pos) / 600.0
 
 	if path_index == 0:
 		position = target_pos

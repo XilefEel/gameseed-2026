@@ -32,6 +32,7 @@ static func load_level(file_path: String, grid: Grid) -> void:
 
 	var player = grid.get_node("Player")
 	player.moves_left = data["moves"]
+	player.max_moves = data["moves"]
 	player.parcel_type = data["parcel_type"]
 
 	current_dialogue = data.get("dialogue", {

@@ -9,5 +9,5 @@ path = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178632769]
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.016682945, 0.016682945)
+scale = Vector2(0.056, 0.056)
 texture = ExtResource("2_1ve3k")
