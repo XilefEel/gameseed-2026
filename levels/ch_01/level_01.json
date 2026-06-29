@@ -52,7 +52,7 @@
   "pirates": [[2, 4]],
   "portals": [],
   "hotspots": [],
-  "star_thresholds": [8, 10],
+  "star_thresholds": [5, 3],
   "dialogue": {
     "positions": {
       "left": "Cahyo",

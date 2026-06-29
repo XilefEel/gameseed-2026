@@ -18,12 +18,11 @@ func _ready() -> void:
 
 
 func calculate_stars() -> int:
-	var used = player.max_moves - player.moves_left
 	var thresholds = LevelLoader.current_star_thresholds
 
-	if used <= thresholds[0]:
+	if player.moves_left >= thresholds[0]:
 		return 3
-	elif used <= thresholds[1]:
+	elif player.moves_left >= thresholds[1]:
 		return 2
 
 	return 1

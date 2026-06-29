@@ -27,9 +27,7 @@ func setup(player: Player) -> void:
 	player.moves_changed.connect(func(moves_left, max_moves):
 		moves_left_label.text = str(moves_left)
 		update_stopwatch(moves_left, max_moves)
-
-		var moves_used = max_moves - moves_left
-		update_star_requirements(moves_used)
+		update_star_requirements(moves_left)
 	)
 
 	player.parcel_type_changed.connect(func(parcel_type):
@@ -48,32 +46,32 @@ func setup(player: Player) -> void:
 	player.update_parcel_ui()
 
 	update_stopwatch(player.moves_left, player.max_moves)
-	update_star_requirements(0)
+	update_star_requirements(player.moves_left)
 
 
-func update_star_requirements(moves_used: int) -> void:
+func update_star_requirements(moves_left: int) -> void:
 	var three_star_threshold = LevelLoader.current_star_thresholds[0]
 	var two_star_threshold = LevelLoader.current_star_thresholds[1]
 
 	update_requirement(
 		three_star_label,
-		moves_used <= three_star_threshold,
+		moves_left >= three_star_threshold,
 		three_star_threshold
 	)
 
 	update_requirement(
 		two_star_label,
-		moves_used <= two_star_threshold,
+		moves_left >= two_star_threshold,
 		two_star_threshold
 	)
 
 
 func update_requirement(label: Label, possible: bool, threshold: int) -> void:
 	if possible:
-		label.text = "✅ Moves used ≤ %d" % threshold
+		label.text = "✅ Moves left ≥ %d" % threshold
 		label.modulate = Color.WHITE
 	else:
-		label.text = "❌ Moves used ≤ %d" % threshold
+		label.text = "❌ Moves left ≥ %d" % threshold
 		label.modulate = Color(0.5, 0.5, 0.5)
 
 
