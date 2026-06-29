@@ -8,12 +8,17 @@ const PIRATE_SCENE = preload("res://scenes/entities/Pirate.tscn")
 const BLACKHOLE_SCENE = preload("res://scenes/entities/Blackhole.tscn")
 const ASTEROID_SCENE = preload("res://scenes/entities/Asteroid.tscn")
 
-
 const DIR_MAP = {
 	"up": Vector2i.UP,
 	"down": Vector2i.DOWN,
 	"left": Vector2i.LEFT,
 	"right": Vector2i.RIGHT
+}
+
+const PARCEL_TYPES = {
+	"normal": Parcel.Type.NORMAL,
+	"fragile": Parcel.Type.FRAGILE,
+	"flammable": Parcel.Type.FLAMMABLE,
 }
 
 static var current_dialogue: Dictionary = {}
@@ -34,7 +39,7 @@ static func load_level(file_path: String, grid: Grid) -> void:
 	var player = grid.get_node("Player")
 	player.moves_left = data["moves"]
 	player.max_moves = data["moves"]
-	player.parcel_type = data["parcel_type"]
+	player.parcel_type = PARCEL_TYPES.get(data["parcel_type"], Parcel.Type.NORMAL)
 
 	current_dialogue = data.get("dialogue", {
 		"positions": {},

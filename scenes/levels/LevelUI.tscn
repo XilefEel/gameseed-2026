@@ -112,14 +112,14 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8avov")
 theme_override_font_sizes/font_size = 20
-text = "✅ Moves used <=10"
+text = "✅ Moves left ≥"
 
 [node name="TwoStarLabel" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=1822752938]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8avov")
 theme_override_font_sizes/font_size = 20
-text = "✅ Moves used <=8"
+text = "✅ Moves left ≥"
 
 [node name="OneStarLabel" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=1059249346]
 unique_name_in_owner = true

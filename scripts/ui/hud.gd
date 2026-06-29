@@ -13,15 +13,16 @@ extends Control
 @onready var two_star_label: Label = %TwoStarLabel
 
 const PARCEL_TEXTURES = {
-	"normal": preload("res://assets/sprites/parcel/normal.png"),
-	"fragile": preload("res://assets/sprites/parcel/fragile.png"),
-	"flammable": preload("res://assets/sprites/parcel/flammable.png"),
+	Parcel.Type.NORMAL: preload("res://assets/sprites/parcel/normal.png"),
+	Parcel.Type.FRAGILE: preload("res://assets/sprites/parcel/fragile.png"),
+	Parcel.Type.FLAMMABLE: preload("res://assets/sprites/parcel/flammable.png"),
 }
 
 const PLAYER_TEXTURES = {
 	"alive": preload("res://assets/sprites/player/cahyo.png"),
 	"dead": preload("res://assets/sprites/player/cahyo_dead.png")
 }
+
 
 func setup(player: Player) -> void:
 	player.moves_changed.connect(func(moves_left, max_moves):
@@ -30,12 +31,12 @@ func setup(player: Player) -> void:
 		update_star_requirements(moves_left)
 	)
 
-	player.parcel_type_changed.connect(func(parcel_type):
-		parcel_image.texture = PARCEL_TEXTURES.get(parcel_type)
+	player.parcel_state_changed.connect(func():
+		update_parcel_status(player)
 	)
 
-	player.parcel_status_changed.connect(func(parcel_status):
-		parcel_status_label.text = parcel_status
+	player.parcel_type_changed.connect(func(parcel_type):
+		parcel_image.texture = PARCEL_TEXTURES.get(parcel_type)
 	)
 
 	player.is_alive_changed.connect(func(is_alive):
@@ -43,11 +44,29 @@ func setup(player: Player) -> void:
 	)
 
 	parcel_image.texture = PARCEL_TEXTURES.get(player.parcel_type)
-	player.update_parcel_ui()
 
+	update_parcel_status(player)
 	update_stopwatch(player.moves_left, player.max_moves)
 	update_star_requirements(player.moves_left)
 
+
+func update_parcel_status(player: Player) -> void:
+	match player.parcel_type:
+		Parcel.Type.NORMAL:
+			parcel_status_label.text = ""
+
+		Parcel.Type.FRAGILE:
+			parcel_status_label.text = "%d dashes left" % player.fragile_dashes
+
+		Parcel.Type.FLAMMABLE:
+			if player.is_burning:
+				parcel_status_label.text = "BURNING! %d turns left" % (4 - player.burn_turns)
+			else:
+				parcel_status_label.text = "HEAT: %d/3" % player.heat_gauge
+
+		_:
+			parcel_status_label.text = ""
+			
 
 func update_star_requirements(moves_left: int) -> void:
 	var three_star_threshold = LevelLoader.current_star_thresholds[0]

@@ -1,6 +1,12 @@
 class_name Parcel
 extends Node
 
+enum Type {
+	NORMAL,
+	FRAGILE,
+	FLAMMABLE
+}
+
 var player: Player
 var movement: MovementController
 var hazards: HazardDetector
@@ -14,7 +20,8 @@ func _ready() -> void:
 
 
 func check_flammable() -> void:
-	if player.parcel_type != "flammable": return
+	if player.parcel_type != Type.FLAMMABLE:
+		return
 
 	if grid.is_hotspot(player.current_cell):
 		player.heat_gauge = min(player.heat_gauge + 1, 3)
@@ -31,7 +38,7 @@ func check_flammable() -> void:
 
 
 func check_fragile() -> bool:
-	if player.parcel_type != "fragile":
+	if player.parcel_type != Type.FRAGILE:
 		return true
 
 	player.fragile_dashes -= 1

@@ -2,8 +2,8 @@ class_name Player
 extends Node2D
 
 signal moves_changed(moves_left: int, max_moves: int)
-signal parcel_type_changed(parcel_type: String)
-signal parcel_status_changed(parcel_status: String)
+signal parcel_type_changed(parcel_type: Parcel.Type)
+signal parcel_state_changed
 signal is_alive_changed(is_alive: bool)
 
 @onready var grid: Grid = get_parent()
@@ -27,7 +27,7 @@ var moves_left := 15 :
 		moves_left = value
 		moves_changed.emit(value, max_moves)
 
-var parcel_type := "none" :
+var parcel_type := Parcel.Type.NORMAL :
 	set(value):
 		parcel_type = value
 		parcel_type_changed.emit(value)
@@ -35,22 +35,22 @@ var parcel_type := "none" :
 var fragile_dashes := 4 :
 	set(value):
 		fragile_dashes = value
-		update_parcel_ui()
+		parcel_state_changed.emit()
 
 var heat_gauge := 0 :
 	set(value):
 		heat_gauge = value
-		update_parcel_ui()
+		parcel_state_changed.emit()
 
 var is_burning := false :
 	set(value):
 		is_burning = value
-		update_parcel_ui()
+		parcel_state_changed.emit()
 
 var burn_turns := 0 :
 	set(value):
 		burn_turns = value
-		update_parcel_ui()
+		parcel_state_changed.emit()
 
 
 func _ready() -> void:
@@ -91,21 +91,3 @@ func _unhandled_input(event) -> void:
 			movement.dash(dir)
 		else:
 			movement.move(dir)
-
-
-func update_parcel_ui() -> void:
-	match parcel_type:
-		"normal":
-			parcel_status_changed.emit("")
-
-		"fragile":
-			parcel_status_changed.emit("%d dashes left" % fragile_dashes)
-
-		"flammable":
-			if is_burning:
-				parcel_status_changed.emit("BURNING! %d turns left" % (4 - burn_turns))
-			else:
-				parcel_status_changed.emit("HEAT: %d/3" % heat_gauge)
-
-		_:
-			parcel_status_changed.emit("")
