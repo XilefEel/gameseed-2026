@@ -40,5 +40,26 @@
       "dir": "right"
     }
   ],
-  "hotspots": []
+  "hotspots": [],
+  "star_thresholds": [5, 3],
+  "dialogue": {
+    "positions": {
+      "left": "Cahyo",
+      "right": "Boss"
+    },
+    "lines": [
+      {
+        "character": "Cahyo",
+        "text": "Another delivery!? I just got back from the last one!"
+      },
+      {
+        "character": "Boss",
+        "text": "Just deliver the package, no questions."
+      },
+      {
+        "character": "Cahyo",
+        "text": "I'm definitely working overtime after this. I hope the pay is worth it."
+      }
+    ]
+  }
 }

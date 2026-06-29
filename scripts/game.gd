@@ -10,7 +10,7 @@ func _ready() -> void:
 	player.set_process_unhandled_input(false)
 	hud.setup(player)
 	
-	var dialogue = LevelLoader.current_dialogue
+	var dialogue = LevelLoader.current_level.dialogue
 	if dialogue.size() > 0:
 		await dialogue_box.play(dialogue)
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func calculate_stars() -> int:
-	var thresholds = LevelLoader.current_star_thresholds
+	var thresholds = LevelLoader.current_level.star_thresholds
 
 	if player.moves_left >= thresholds[0]:
 		return 3

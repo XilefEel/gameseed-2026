@@ -69,8 +69,8 @@ func update_parcel_status(player: Player) -> void:
 			
 
 func update_star_requirements(moves_left: int) -> void:
-	var three_star_threshold = LevelLoader.current_star_thresholds[0]
-	var two_star_threshold = LevelLoader.current_star_thresholds[1]
+	var three_star_threshold = LevelLoader.current_level.star_thresholds[0]
+	var two_star_threshold = LevelLoader.current_level.star_thresholds[1]
 
 	update_requirement(
 		three_star_label,

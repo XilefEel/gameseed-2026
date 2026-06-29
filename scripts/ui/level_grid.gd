@@ -22,7 +22,7 @@ var portals := {}
 
 func _ready() -> void:
 	clear()
-	LevelLoader.load_level(LevelLoader.current_level, self)
+	LevelLoader.load_level(LevelLoader.current_level_path, self)
 	draw_grid()
 	camera.setup_camera(size)
 	
