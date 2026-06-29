@@ -58,11 +58,12 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer" unique_id=231036993]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=416495655]
+[node name="StopWatchContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=416495655]
 layout_mode = 2
 
-[node name="StopWatch" type="TextureProgressBar" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=824797435]
+[node name="StopWatch" type="TextureProgressBar" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StopWatchContainer" unique_id=824797435]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 206)
 layout_mode = 2
@@ -72,18 +73,18 @@ texture_under = ExtResource("3_p8r62")
 texture_over = ExtResource("3_j3tnw")
 texture_progress = ExtResource("4_4gpf0")
 
-[node name="ClockHand" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=353036545]
+[node name="ClockHand" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StopWatchContainer/StopWatch" unique_id=353036545]
 unique_name_in_owner = true
 position = Vector2(103, 103)
 scale = Vector2(0.32421875, 0.30722913)
 texture = ExtResource("5_4gpf0")
 
-[node name="Center" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch" unique_id=110253993]
+[node name="Center" type="Sprite2D" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StopWatchContainer/StopWatch" unique_id=110253993]
 position = Vector2(103, 103)
 scale = Vector2(0.29431152, 0.29431152)
 texture = ExtResource("5_gkiic")
 
-[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer2/StopWatch/Center" unique_id=786712554]
+[node name="MovesLeft" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StopWatchContainer/StopWatch/Center" unique_id=786712554]
 unique_name_in_owner = true
 offset_left = -42.381046
 offset_top = -52.35305
@@ -96,17 +97,48 @@ text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1636362023]
+[node name="StarRequirements" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=414007319]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=1987350861]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8avov")
+theme_override_font_sizes/font_size = 20
+text = "Star Objectives"
+
+[node name="ThreeStarLabel" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=593039583]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8avov")
+theme_override_font_sizes/font_size = 20
+text = "✅ Moves used <=10"
+
+[node name="TwoStarLabel" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=1822752938]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8avov")
+theme_override_font_sizes/font_size = 20
+text = "✅ Moves used <=8"
+
+[node name="OneStarLabel" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/StarRequirements" unique_id=1059249346]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8avov")
+theme_override_font_sizes/font_size = 20
+text = "✅ Get to the end"
+
+[node name="ParcelContainer" type="VBoxContainer" parent="HUD/LeftPanel/MarginContainer/VBoxContainer" unique_id=1636362023]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ParcelImage" type="TextureRect" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=705411438]
+[node name="ParcelImage" type="TextureRect" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelContainer" unique_id=705411438]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_ndsgl")
 expand_mode = 4
 
-[node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1592924229]
+[node name="ParcelStatus" type="Label" parent="HUD/LeftPanel/MarginContainer/VBoxContainer/ParcelContainer" unique_id=1592924229]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8avov")

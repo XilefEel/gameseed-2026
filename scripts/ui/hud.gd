@@ -9,6 +9,9 @@ extends Control
 @onready var stopwatch: TextureProgressBar = %StopWatch
 @onready var clockhand: Sprite2D = %ClockHand
 
+@onready var three_star_label: Label = %ThreeStarLabel
+@onready var two_star_label: Label = %TwoStarLabel
+
 const PARCEL_TEXTURES = {
 	"normal": preload("res://assets/sprites/parcel/normal.png"),
 	"fragile": preload("res://assets/sprites/parcel/fragile.png"),
@@ -22,12 +25,15 @@ const PLAYER_TEXTURES = {
 
 func setup(player: Player) -> void:
 	player.moves_changed.connect(func(moves_left, max_moves):
-		moves_left_label.text = "%d" % moves_left	
+		moves_left_label.text = str(moves_left)
 		update_stopwatch(moves_left, max_moves)
+
+		var moves_used = max_moves - moves_left
+		update_star_requirements(moves_used)
 	)
 
 	player.parcel_type_changed.connect(func(parcel_type):
-		parcel_image.texture = PARCEL_TEXTURES.get(parcel_type, null)
+		parcel_image.texture = PARCEL_TEXTURES.get(parcel_type)
 	)
 
 	player.parcel_status_changed.connect(func(parcel_status):
@@ -37,10 +43,38 @@ func setup(player: Player) -> void:
 	player.is_alive_changed.connect(func(is_alive):
 		player_image.texture = PLAYER_TEXTURES["alive"] if is_alive else PLAYER_TEXTURES["dead"]
 	)
-	
-	parcel_image.texture = PARCEL_TEXTURES.get(player.parcel_type, null)
+
+	parcel_image.texture = PARCEL_TEXTURES.get(player.parcel_type)
 	player.update_parcel_ui()
+
 	update_stopwatch(player.moves_left, player.max_moves)
+	update_star_requirements(0)
+
+
+func update_star_requirements(moves_used: int) -> void:
+	var three_star_threshold = LevelLoader.current_star_thresholds[0]
+	var two_star_threshold = LevelLoader.current_star_thresholds[1]
+
+	update_requirement(
+		three_star_label,
+		moves_used <= three_star_threshold,
+		three_star_threshold
+	)
+
+	update_requirement(
+		two_star_label,
+		moves_used <= two_star_threshold,
+		two_star_threshold
+	)
+
+
+func update_requirement(label: Label, possible: bool, threshold: int) -> void:
+	if possible:
+		label.text = "✅ Moves used ≤ %d" % threshold
+		label.modulate = Color.WHITE
+	else:
+		label.text = "❌ Moves used ≤ %d" % threshold
+		label.modulate = Color(0.5, 0.5, 0.5)
 
 
 func update_stopwatch(moves: int, maximum: int) -> void:
