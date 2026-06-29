@@ -5,12 +5,27 @@ extends Node2D
 @onready var grid: Grid = $Grid
 @onready var hud: Control = $"UI/HUD"
 @onready var dialogue_box := $DialogueBox
+@onready var camera: Camera2D = $Camera2D
+
+var level: LevelData = null
+
+static var current_level_path := ""
+static var current_chapter := 1
+static var current_chapter_scene := "res://scenes/ui/chapters/Chapter1.tscn"
+
+static var last_stars := 0
 
 func _ready() -> void:
-	player.set_process_unhandled_input(false)
-	hud.setup(player)
+	grid.initialize()
+	level = LevelLoader.load_level(current_level_path, grid)
+	hud.setup(player, level)
+	grid.grid_ready.emit()
+
+	camera.setup_camera(grid.size)
 	
-	var dialogue = LevelLoader.current_level.dialogue
+	player.set_process_unhandled_input(false)
+	
+	var dialogue = level.dialogue
 	if dialogue.size() > 0:
 		await dialogue_box.play(dialogue)
 
@@ -18,11 +33,9 @@ func _ready() -> void:
 
 
 func calculate_stars() -> int:
-	var thresholds = LevelLoader.current_level.star_thresholds
-
-	if player.moves_left >= thresholds[0]:
+	if player.moves_left >= level.star_thresholds[0]:
 		return 3
-	elif player.moves_left >= thresholds[1]:
+	elif player.moves_left >= level.star_thresholds[1]:
 		return 2
 
 	return 1
@@ -37,7 +50,7 @@ func game_over() -> void:
 
 
 func win() -> void:
-	LevelLoader.last_stars = calculate_stars()
+	last_stars = calculate_stars()
 	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/ui/Win.tscn")
 
@@ -47,4 +60,4 @@ func _on_retry_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
+	get_tree().change_scene_to_file(current_chapter_scene)

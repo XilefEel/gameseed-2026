@@ -1,12 +1,5 @@
 class_name LevelLoader
 
-static var current_level_path := ""
-static var current_level: LevelData = null
-
-static var current_chapter := 1
-static var current_chapter_scene := "res://scenes/ui/chapters/Chapter1.tscn"
-static var last_stars := 0
-
 const PIRATE_SCENE = preload("res://scenes/entities/Pirate.tscn")
 const BLACKHOLE_SCENE = preload("res://scenes/entities/Blackhole.tscn")
 const ASTEROID_SCENE = preload("res://scenes/entities/Asteroid.tscn")
@@ -19,7 +12,7 @@ const DIR_MAP = {
 }
 
 
-static func load_level(file_path: String, grid: Grid) -> void:
+static func load_level(file_path: String, grid: Grid) -> LevelData:
 	var file := FileAccess.open(file_path, FileAccess.READ)
 
 	if not file:
@@ -29,52 +22,55 @@ static func load_level(file_path: String, grid: Grid) -> void:
 	var json := JSON.new()
 	json.parse(file.get_as_text())
 
-	current_level = LevelData.new(json.get_data())
-	current_level_path = file_path
+	var level = LevelData.new(json.get_data())
 
-	setup_player(grid)
-	setup_grid(grid)
-	spawn_entities(grid)
+	setup_player(level, grid)
+	setup_grid(level, grid)
+	spawn_entities(level, grid)
+
+	return level
 
 
-static func setup_player(grid: Grid) -> void:
+static func setup_player(level: LevelData, grid: Grid) -> void:
 	var player: Player = grid.get_node("Player")
 
-	player.moves_left = current_level.moves
-	player.max_moves = current_level.moves
-	player.parcel_type = current_level.parcel_type
+	player.moves_left = level.moves
+	player.max_moves = level.moves
+	player.parcel_type = level.parcel_type
 
 
-static func setup_grid(grid: Grid) -> void:
-	grid.size = current_level.grid_size
-	grid.start_cell = current_level.start_cell
-	grid.end_cell = current_level.end_cell
+static func setup_grid(level: LevelData, grid: Grid) -> void:
+	grid.size = level.grid_size
+	grid.start_cell = level.start_cell
+	grid.end_cell = level.end_cell
+
+	grid.draw_grid()
 
 	grid.set_cell(grid.start_cell, 0, grid.START)
 	grid.set_cell(grid.end_cell, 0, grid.END)
 
-	for cell in current_level.debris:
+	for cell in level.debris:
 		grid.set_cell(cell, 0, grid.DEBRIS)
 
-	for cell in current_level.houses:
+	for cell in level.houses:
 		grid.set_cell(cell, 0, grid.HOUSE)
 
-	for cell in current_level.hotspots:
+	for cell in level.hotspots:
 		grid.set_cell(cell, 0, grid.HOTSPOT)
 
 
-static func spawn_entities(grid: Grid) -> void:
-	for cell in current_level.pirates:
+static func spawn_entities(level: LevelData, grid: Grid) -> void:
+	for cell in level.pirates:
 		var pirate = PIRATE_SCENE.instantiate()
 		pirate.cell = cell
 		grid.add_child(pirate)
 
-	for cell in current_level.blackholes:
+	for cell in level.blackholes:
 		var blackhole = BLACKHOLE_SCENE.instantiate()
 		blackhole.cell = cell
 		grid.add_child(blackhole)
 
-	for asteroid_data in current_level.asteroids:
+	for asteroid_data in level.asteroids:
 		var asteroid = ASTEROID_SCENE.instantiate()
 
 		var path: Array[Vector2i] = []
@@ -84,9 +80,9 @@ static func spawn_entities(grid: Grid) -> void:
 		asteroid.path = path
 		grid.add_child(asteroid)
 
-	for i in range(0, current_level.portals.size() - 1, 2):
-		var a = current_level.portals[i]
-		var b = current_level.portals[i + 1]
+	for i in range(0, level.portals.size() - 1, 2):
+		var a = level.portals[i]
+		var b = level.portals[i + 1]
 
 		var a_cell = Vector2i(a["cell"]["x"], a["cell"]["y"])
 		var b_cell = Vector2i(b["cell"]["x"], b["cell"]["y"])

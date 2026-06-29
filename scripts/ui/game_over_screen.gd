@@ -5,4 +5,4 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_pressed_2() -> void:
-	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
+	get_tree().change_scene_to_file(Game.current_chapter_scene)

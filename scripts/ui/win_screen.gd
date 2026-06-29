@@ -13,7 +13,7 @@ func _ready():
 	for star in stars:
 		star.pivot_offset = star.size / 2.0
 
-	await animate_stars(LevelLoader.last_stars)
+	await animate_stars(Game.last_stars)
 
 
 func animate_stars(count: int) -> void:
@@ -39,4 +39,4 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
+	get_tree().change_scene_to_file(Game.current_chapter_scene)

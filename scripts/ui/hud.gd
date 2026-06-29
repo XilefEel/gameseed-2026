@@ -24,11 +24,11 @@ const PLAYER_TEXTURES = {
 }
 
 
-func setup(player: Player) -> void:
+func setup(player: Player, level: LevelData) -> void:
 	player.moves_changed.connect(func(moves_left, max_moves):
 		moves_left_label.text = str(moves_left)
 		update_stopwatch(moves_left, max_moves)
-		update_star_requirements(moves_left)
+		update_star_requirements(moves_left, level)
 	)
 
 	player.parcel_state_changed.connect(func():
@@ -47,7 +47,7 @@ func setup(player: Player) -> void:
 
 	update_parcel_status(player)
 	update_stopwatch(player.moves_left, player.max_moves)
-	update_star_requirements(player.moves_left)
+	update_star_requirements(player.moves_left, level)
 
 
 func update_parcel_status(player: Player) -> void:
@@ -68,9 +68,9 @@ func update_parcel_status(player: Player) -> void:
 			parcel_status_label.text = ""
 			
 
-func update_star_requirements(moves_left: int) -> void:
-	var three_star_threshold = LevelLoader.current_level.star_thresholds[0]
-	var two_star_threshold = LevelLoader.current_level.star_thresholds[1]
+func update_star_requirements(moves_left: int, level: LevelData) -> void:
+	var three_star_threshold = level.star_thresholds[0]
+	var two_star_threshold = level.star_thresholds[1]
 
 	update_requirement(
 		three_star_label,
@@ -105,7 +105,7 @@ func update_stopwatch(moves: int, maximum: int) -> void:
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file(LevelLoader.current_chapter_scene)
+	get_tree().change_scene_to_file(Game.current_chapter_scene)
 
 
 func _on_retry_pressed():
