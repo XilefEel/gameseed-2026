@@ -4,18 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://w8vbukqygpqc" path="res://assets/ui/level_select/ch_02.png" id="2_wg7h5"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="3_ad3o4"]
 
-[node name="LevelSelect" type="Node2D" unique_id=1905418079]
+[node name="LevelSelect" type="Control" unique_id=1237394159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ad3o4")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1347480485]
-offset_right = 1153.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_wg7h5")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=818444936]
-offset_right = 1150.0
-offset_bottom = 647.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1890416643]
 layout_mode = 2

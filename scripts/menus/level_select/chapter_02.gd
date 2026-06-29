@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var level_container = $HBoxContainer/CenterContainer/VBoxContainer/LevelContainer
 @onready var font = preload("res://assets/fonts/Amaranth-Regular.ttf")
