@@ -2,6 +2,7 @@ extends Node
 
 enum UI {
 	CLICK,
+	STAR
 }
 
 enum SFX {
@@ -18,6 +19,7 @@ enum SFX {
 
 const UI_SOUNDS: Dictionary = {
 	UI.CLICK: preload("res://assets/sfx/ui/click.wav"),
+	UI.STAR: preload("res://assets/sfx/ui/star.mp3")
 }
 
 const SFX_SOUNDS: Dictionary = {

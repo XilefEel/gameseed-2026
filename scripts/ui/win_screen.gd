@@ -10,12 +10,28 @@ const STAR_FILLED = preload("res://assets/ui/star_filled.png")
 const STAR_EMPTY = preload("res://assets/ui/star_empty.png")
 
 func _ready():
-	show_stars(LevelLoader.last_stars)
+	for star in stars:
+		star.pivot_offset = star.size / 2.0
+
+	await animate_stars(LevelLoader.last_stars)
 
 
-func show_stars(count: int) -> void:
-	for i in stars.size():
-		stars[i].texture = STAR_FILLED if i < count else STAR_EMPTY
+func animate_stars(count: int) -> void:
+	for i in count:
+		await get_tree().create_timer(0.35).timeout
+
+		stars[i].texture = STAR_FILLED
+		stars[i].scale = Vector2(1.5, 1.5)
+
+		var tween = create_tween()
+		tween.tween_property(
+			stars[i],
+			"scale",
+			Vector2.ONE,
+			0.2
+		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+		AudioManager.play_ui(AudioManager.UI.STAR)
 
 
 func _on_button_pressed() -> void:
