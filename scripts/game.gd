@@ -17,6 +17,18 @@ func _ready() -> void:
 	player.set_process_unhandled_input(true)
 
 
+func calculate_stars() -> int:
+	var used = player.max_moves - player.moves_left
+	var thresholds = LevelLoader.current_star_thresholds
+
+	if used <= thresholds[0]:
+		return 3
+	elif used <= thresholds[1]:
+		return 2
+
+	return 1
+
+
 func game_over() -> void:
 	AudioManager.play_sfx(AudioManager.SFX.DIE)
 	player.is_moving = true
@@ -26,6 +38,7 @@ func game_over() -> void:
 
 
 func win() -> void:
+	LevelLoader.last_stars = calculate_stars()
 	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/ui/Win.tscn")
 

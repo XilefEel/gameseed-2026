@@ -17,7 +17,8 @@ const DIR_MAP = {
 }
 
 static var current_dialogue: Dictionary = {}
-
+static var current_star_thresholds: Array = []
+static var last_stars := 0
 
 static func load_level(file_path: String, grid: Grid) -> void:
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -39,6 +40,7 @@ static func load_level(file_path: String, grid: Grid) -> void:
 		"positions": {},
 		"lines": []
 	})
+	current_star_thresholds = data.get("star_thresholds", [])
 
 	grid.size = data["grid_size"]
 	grid.start_cell = Vector2i(data["start_cell"][0], data["start_cell"][1])
