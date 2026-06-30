@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crchfwl76ynan"
-path="res://.godot/imported/cahyo_dead.png-71b215d6a879e5b4015b0a52bdb78ef6.ctex"
+uid="uid://cq0n6bq6kuhld"
+path="res://.godot/imported/clock_pointer.png-1b651a2e9e726378f3ad0cbb2360893d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/cahyo_dead.png"
-dest_files=["res://.godot/imported/cahyo_dead.png-71b215d6a879e5b4015b0a52bdb78ef6.ctex"]
+source_file="res://assets/hud/clock_pointer.png"
+dest_files=["res://.godot/imported/clock_pointer.png-1b651a2e9e726378f3ad0cbb2360893d.ctex"]
 
 [params]
 

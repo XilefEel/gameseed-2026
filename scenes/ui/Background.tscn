@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbqmqxbcjdkpc"]
 
-[ext_resource type="Texture2D" uid="uid://dhjbwv2nlpywn" path="res://assets/ui/asteroid_grid_bg.png" id="1_kx87i"]
+[ext_resource type="Texture2D" uid="uid://dhjbwv2nlpywn" path="res://assets/level/asteroid_grid_bg.png" id="1_kx87i"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1744534265]
 layer = -1

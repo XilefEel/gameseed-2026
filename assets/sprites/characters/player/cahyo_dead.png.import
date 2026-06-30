@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhjbwv2nlpywn"
-path="res://.godot/imported/asteroid_grid_bg.png-585c2a440b941f4eaa252c5a7884cbde.ctex"
+uid="uid://crchfwl76ynan"
+path="res://.godot/imported/cahyo_dead.png-9c3a2a0b993b0ffd6411ca022547cdb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/asteroid_grid_bg.png"
-dest_files=["res://.godot/imported/asteroid_grid_bg.png-585c2a440b941f4eaa252c5a7884cbde.ctex"]
+source_file="res://assets/sprites/characters/player/cahyo_dead.png"
+dest_files=["res://.godot/imported/cahyo_dead.png-9c3a2a0b993b0ffd6411ca022547cdb9.ctex"]
 
 [params]
 

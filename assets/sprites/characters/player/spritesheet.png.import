@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0n6bq6kuhld"
-path="res://.godot/imported/clock_pointer.png-eab151805ea79db30f7761f114305a89.ctex"
+uid="uid://4gphd85fw8va"
+path="res://.godot/imported/spritesheet.png-9f73814225c6813f17da7d3c3bb64008.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/clock_pointer.png"
-dest_files=["res://.godot/imported/clock_pointer.png-eab151805ea79db30f7761f114305a89.ctex"]
+source_file="res://assets/sprites/characters/player/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-9f73814225c6813f17da7d3c3bb64008.ctex"]
 
 [params]
 

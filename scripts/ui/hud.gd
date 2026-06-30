@@ -19,8 +19,8 @@ const PARCEL_TEXTURES = {
 }
 
 const PLAYER_TEXTURES = {
-	"alive": preload("res://assets/sprites/player/cahyo.png"),
-	"dead": preload("res://assets/sprites/player/cahyo_dead.png")
+	"alive": preload("res://assets/sprites/characters/player/cahyo.png"),
+	"dead": preload("res://assets/sprites/characters/player/cahyo_dead.png")
 }
 
 

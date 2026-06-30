@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://6cp3cov00ao7"]
 
-[ext_resource type="Texture2D" uid="uid://bhbpvkci3r5c2" path="res://assets/tileset/tileset-asset.png" id="1_4vj0a"]
+[ext_resource type="Texture2D" uid="uid://bhbpvkci3r5c2" path="res://assets/level/grid_tileset.png" id="1_4vj0a"]
 [ext_resource type="Script" uid="uid://bpjt5smbnexgg" path="res://scripts/ui/level_grid.gd" id="2_2a7hw"]
 [ext_resource type="PackedScene" uid="uid://bna7et0tvojy2" path="res://scenes/entities/Player.tscn" id="3_tgt85"]
 

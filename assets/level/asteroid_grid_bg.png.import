@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl1bxds5n8e1i"
-path="res://.godot/imported/boss.png-b80a1a47241299ef7765afcef76fa068.ctex"
+uid="uid://dhjbwv2nlpywn"
+path="res://.godot/imported/asteroid_grid_bg.png-4a3dc4133391c836723fe25c57c51c04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/boss.png"
-dest_files=["res://.godot/imported/boss.png-b80a1a47241299ef7765afcef76fa068.ctex"]
+source_file="res://assets/level/asteroid_grid_bg.png"
+dest_files=["res://.godot/imported/asteroid_grid_bg.png-4a3dc4133391c836723fe25c57c51c04.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://extpmqakdfdm"
-path="res://.godot/imported/clock_red.png-b4ac52aacab85398887f087f6154df2a.ctex"
+uid="uid://cl1bxds5n8e1i"
+path="res://.godot/imported/boss.png-ef32fcfba907a73bbe4d694ad5f0728b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/clock_red.png"
-dest_files=["res://.godot/imported/clock_red.png-b4ac52aacab85398887f087f6154df2a.ctex"]
+source_file="res://assets/sprites/characters/boss.png"
+dest_files=["res://.godot/imported/boss.png-ef32fcfba907a73bbe4d694ad5f0728b.ctex"]
 
 [params]
 

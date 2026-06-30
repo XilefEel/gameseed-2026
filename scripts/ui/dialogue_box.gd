@@ -17,8 +17,8 @@ var current_line := 0
 var is_typing := false
 
 const CHARACTER_SPRITES = {
-	"Cahyo": preload("res://assets/sprites/player/cahyo.png"),
-	"Boss": preload("res://assets/sprites/player/boss.png")
+	"Cahyo": preload("res://assets/sprites/characters/player/cahyo.png"),
+	"Boss": preload("res://assets/sprites/characters/boss.png")
 }
 
 const DIALOGUE_DELAYS = {

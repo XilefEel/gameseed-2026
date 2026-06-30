@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bna7et0tvojy2"]
 
 [ext_resource type="Script" uid="uid://b6m0tarejb6be" path="res://scripts/entities/player.gd" id="1_mdl7e"]
-[ext_resource type="Texture2D" uid="uid://4gphd85fw8va" path="res://assets/sprites/player/spritesheet.png" id="2_j1g85"]
+[ext_resource type="Texture2D" uid="uid://4gphd85fw8va" path="res://assets/sprites/characters/player/spritesheet.png" id="2_j1g85"]
 [ext_resource type="Script" uid="uid://b4ohq4qldkrjm" path="res://scripts/player/hazard_detector.gd" id="3_70d11"]
 [ext_resource type="Script" uid="uid://baqb4knnr630g" path="res://scripts/player/movement_controller.gd" id="4_cw2d6"]
 [ext_resource type="Script" uid="uid://djwuiu5imqvd0" path="res://scripts/player/parcel.gd" id="7_lfoco"]
