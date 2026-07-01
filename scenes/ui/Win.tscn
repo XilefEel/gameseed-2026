@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ca85gigvlsfp0" path="res://scripts/ui/win_screen.gd" id="1_pnk8a"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_k3dxi"]
-[ext_resource type="Texture2D" uid="uid://otxsi438503w" path="res://assets/ui/star_empty.png" id="3_ycr0m"]
+[ext_resource type="Texture2D" uid="uid://dy33ndqf2y2vj" path="res://assets/ui/star_empty.png" id="3_ycr0m"]
+[ext_resource type="Texture2D" uid="uid://2kncluy8qkwy" path="res://assets/ui/buttons/retry.png" id="4_r8bh5"]
+[ext_resource type="Texture2D" uid="uid://b8uln8ysxxxrn" path="res://assets/ui/buttons/retry_click.png" id="5_lggdy"]
+[ext_resource type="Texture2D" uid="uid://crk30jydicne3" path="res://assets/ui/buttons/retry_hover.png" id="6_rkwyr"]
+[ext_resource type="Texture2D" uid="uid://oyqt04nfwgei" path="res://assets/ui/buttons/bt_home.png" id="7_cc1us"]
+[ext_resource type="Texture2D" uid="uid://slypoumjq0oo" path="res://assets/ui/buttons/bt_home_click.png" id="8_drncm"]
+[ext_resource type="Texture2D" uid="uid://h1wotwf0a07s" path="res://assets/ui/buttons/bt_home_hover.png" id="9_gdnow"]
 
 [node name="Win" type="Control" unique_id=1313962871]
 layout_mode = 3
@@ -34,7 +40,7 @@ horizontal_alignment = 1
 
 [node name="Stars" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=65806106]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 32
 
 [node name="Star1" type="TextureRect" parent="CenterContainer/VBoxContainer/Stars" unique_id=916201295]
 unique_name_in_owner = true
@@ -51,19 +57,30 @@ unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_ycr0m")
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=650933478]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=549254395]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=673930969]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_k3dxi")
-theme_override_font_sizes/font_size = 20
-text = "Play Again?"
+texture_normal = ExtResource("4_r8bh5")
+texture_pressed = ExtResource("5_lggdy")
+texture_hover = ExtResource("6_rkwyr")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1570487407]
+[node name="Button2" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=180469470]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_k3dxi")
-theme_override_font_sizes/font_size = 20
-text = "Back"
+texture_normal = ExtResource("7_cc1us")
+texture_pressed = ExtResource("8_drncm")
+texture_hover = ExtResource("9_gdnow")
+ignore_texture_size = true
+stretch_mode = 5
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://5krxqh2hq17h" path="res://scripts/menus/level_select/chapter_02.gd" id="1_ad3o4"]
 [ext_resource type="Texture2D" uid="uid://w8vbukqygpqc" path="res://assets/ui/level_select/ch_02.png" id="2_wg7h5"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="3_ad3o4"]
+[ext_resource type="Texture2D" uid="uid://c444edobwe2o4" path="res://assets/ui/buttons/bt_prev.png" id="3_exob5"]
+[ext_resource type="Texture2D" uid="uid://bty21p8tfy6xe" path="res://assets/ui/buttons/bt_prev_click.png" id="4_j0r40"]
+[ext_resource type="Texture2D" uid="uid://bci4ig3sck0yy" path="res://assets/ui/buttons/bt_prev_hover.png" id="5_2y01b"]
+[ext_resource type="Texture2D" uid="uid://cgnr0pw5eqpyd" path="res://assets/ui/buttons/bt_next.png" id="7_mxodd"]
+[ext_resource type="Texture2D" uid="uid://klytpe2vmavn" path="res://assets/ui/buttons/bt_next_click.png" id="8_mtoxw"]
+[ext_resource type="Texture2D" uid="uid://bd4wu7r1ucion" path="res://assets/ui/buttons/bt_next_hover.png" id="9_wxj6b"]
 
 [node name="LevelSelect" type="Control" unique_id=1237394159]
 layout_mode = 3
@@ -40,10 +46,15 @@ theme_override_constants/margin_left = 40
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="PrevButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=617553386]
+[node name="PrevButton" type="TextureButton" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=2050891167]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ad3o4")
-text = "Prev"
+texture_normal = ExtResource("3_exob5")
+texture_pressed = ExtResource("4_j0r40")
+texture_hover = ExtResource("5_2y01b")
+texture_disabled = ExtResource("4_j0r40")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="CenterContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1381849000]
 layout_mode = 2
@@ -77,10 +88,16 @@ theme_override_constants/margin_right = 40
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="NextButton" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=552346571]
+[node name="NextButton" type="TextureButton" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1932123609]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ad3o4")
-text = "Next"
+disabled = true
+texture_normal = ExtResource("7_mxodd")
+texture_pressed = ExtResource("8_mtoxw")
+texture_hover = ExtResource("9_wxj6b")
+texture_disabled = ExtResource("8_mtoxw")
+ignore_texture_size = true
+stretch_mode = 5
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/PrevButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/NextButton" to="." method="_on_button_pressed_2"]

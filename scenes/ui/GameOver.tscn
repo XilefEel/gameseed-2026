@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://byeccmpsady8k" path="res://scripts/ui/game_over_screen.gd" id="1_6bcno"]
 [ext_resource type="FontFile" uid="uid://d2t7v7bvos2no" path="res://assets/fonts/Amaranth-Regular.ttf" id="2_57v1k"]
+[ext_resource type="Texture2D" uid="uid://2kncluy8qkwy" path="res://assets/ui/buttons/retry.png" id="3_xgyu6"]
+[ext_resource type="Texture2D" uid="uid://b8uln8ysxxxrn" path="res://assets/ui/buttons/retry_click.png" id="4_1q2vd"]
+[ext_resource type="Texture2D" uid="uid://crk30jydicne3" path="res://assets/ui/buttons/retry_hover.png" id="5_sobie"]
+[ext_resource type="Texture2D" uid="uid://oyqt04nfwgei" path="res://assets/ui/buttons/bt_home.png" id="6_ujpma"]
+[ext_resource type="Texture2D" uid="uid://slypoumjq0oo" path="res://assets/ui/buttons/bt_home_click.png" id="7_0j54c"]
+[ext_resource type="Texture2D" uid="uid://h1wotwf0a07s" path="res://assets/ui/buttons/bt_home_hover.png" id="8_028wy"]
 
 [node name="GameOver" type="Control" unique_id=1175204752]
 layout_mode = 3
@@ -22,6 +28,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=548591848]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=197215434]
 layout_mode = 2
@@ -29,19 +36,30 @@ theme_override_fonts/font = ExtResource("2_57v1k")
 theme_override_font_sizes/font_size = 40
 text = "GAME OVER!"
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=885748581]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1171607813]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1134117098]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_57v1k")
-theme_override_font_sizes/font_size = 20
-text = "Try Again?"
+texture_normal = ExtResource("3_xgyu6")
+texture_pressed = ExtResource("4_1q2vd")
+texture_hover = ExtResource("5_sobie")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=404767566]
+[node name="Button2" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1990039213]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_57v1k")
-theme_override_font_sizes/font_size = 20
-text = "Back"
+texture_normal = ExtResource("6_ujpma")
+texture_pressed = ExtResource("7_0j54c")
+texture_hover = ExtResource("8_028wy")
+ignore_texture_size = true
+stretch_mode = 5
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_pressed_2"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_pressed_2"]
